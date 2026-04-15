@@ -2,6 +2,7 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 
 const Contactusform = () => {
@@ -83,9 +84,9 @@ const Contactusform = () => {
                                 <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
 
                                     <div className="py-8 lg:py-8 px-4 mx-auto max-w-screen-md">
-                                        <div className="flex flex-shrink-0 items-center justify-center">
+                                        <div className="flex flex-shrink-0 items-center justify-center mb-8">
                                             <Link href="/" className='text-2xl sm:text-4xl font-semibold text-black'>
-                                                Desgy Solutions
+                                                <Image src="/images/logo/logo.png" alt="logo" width={150} height={50} />
                                             </Link>
                                         </div>
                                         <p className="mb-8 lg:mb-16 mt-8 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Contact us now? Want to send us a feedback?</p>

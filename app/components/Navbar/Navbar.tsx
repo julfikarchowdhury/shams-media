@@ -1,6 +1,7 @@
 "use client"
 import { Disclosure } from '@headlessui/react';
 import Link from 'next/link';
+import Image from 'next/image';
 import React from 'react';
 import { Bars3Icon } from '@heroicons/react/24/outline';
 import Drawer from "./Drawer";
@@ -39,7 +40,7 @@ const Navbar = () => {
 
                             <div className="flex flex-shrink-0 items-center border-right">
                                 <Link href="/" className='text-2xl sm:text-4xl font-semibold text-white'>
-                                    Desgy Solutions
+                                    <Image src="/images/logo/logo.png" alt="logo" width={150} height={50} />
                                 </Link>
                             </div>
 

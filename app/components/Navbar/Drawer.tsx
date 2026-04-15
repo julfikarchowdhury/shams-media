@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import Link from "next/link";
+import Image from "next/image";
 
 
 interface DrawerProps {
@@ -32,7 +33,7 @@ const Drawer = ({ children, isOpen, setIsOpen }: DrawerProps) => {
 
                         <div className="flex flex-shrink-0 items-center border-right">
                             <Link href="/" className='text-2xl font-semibold text-white'>
-                                Desgy Solutions
+                                <Image src="/images/logo/logo.png" alt="logo" width={150} height={50} />
                             </Link>
                         </div>
 
