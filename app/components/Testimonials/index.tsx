@@ -102,21 +102,21 @@ export default class MultipleItems extends Component {
 
 
         return (
-            <div className="relative pt-40 pb-32 lg:py-32 overflow-hidden" id="testimonial-section">
+            <div className="relative pt-16 pb-16 lg:pt-28 lg:pb-28 overflow-hidden" id="testimonial-section">
                 {/* Background ambient lighting */}
                 <div className="absolute bottom-0 left-0 w-1/2 h-[500px] bg-soft/30 blur-[150px] pointer-events-none -z-10 rounded-full" />
                 
                 <div className='mx-auto max-w-7xl sm:py-4 lg:px-8 relative z-10'>
 
-                    <div className="text-center mb-20 lg:mb-24">
-                        <h3 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white my-4 tracking-tight">Our clients, <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon to-pink-500">Their words.</span></h3>
+                    <div className="text-center mb-10 lg:mb-16">
+                        <h3 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white my-4 tracking-tight">Our clients, <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon to-pink-500">Their words.</span></h3>
                         <p className="mt-4 text-lg text-white/50 max-w-2xl mx-auto">Don&apos;t just take our word for it. Here&apos;s what others have to say.</p>
                     </div>
 
                     <Slider {...settings}>
                         {postData.map((items, i) => (
                             <div key={i} className="px-3">
-                                <div className='bg-white/5 border border-white/10 backdrop-blur-md p-8 lg:p-10 my-10 rounded-[32px] relative group hover:border-white/20 hover:bg-white/10 transition-all duration-300'>
+                                <div className='bg-white/5 border border-white/10 backdrop-blur-md p-6 lg:p-8 mt-12 mb-6 rounded-[32px] relative group hover:border-white/20 hover:bg-white/10 transition-all duration-300'>
                                     {/* Glass avatar cutout simulation */}
                                     <div className="absolute -top-10 left-10 p-2 bg-navyblue rounded-full">
                                         <Image src={items.imgSrc} alt={items.imgSrc} width={71} height={71} className="rounded-full bg-white/10" />

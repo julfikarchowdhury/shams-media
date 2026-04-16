@@ -13,6 +13,7 @@ body {
   font-family: 'Urbanist', sans-serif;
   background-color: #081320;
   color: #ffffff;
+  overflow-x: hidden;
 }
 
 .text-neon {

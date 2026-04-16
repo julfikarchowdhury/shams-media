@@ -35,13 +35,13 @@ const faqs = [
 
 const FAQ = () => {
     return (
-        <div id="faq-section" className='relative mx-auto max-w-7xl py-24 lg:px-8 rounded-2xl my-16 overflow-hidden'>
+        <div id="faq-section" className='relative mx-auto max-w-7xl py-12 lg:py-20 lg:px-8 rounded-2xl my-12 lg:my-20 overflow-hidden'>
             {/* Ambient glow */}
             <div className="absolute top-1/4 right-0 w-96 h-96 bg-neon/10 blur-[150px] rounded-full pointer-events-none -z-10" />
 
-            <h3 className='text-neon text-sm md:text-base font-bold tracking-[0.2em] uppercase text-center mb-4'>FAQ</h3>
-            <h2 className='text-4xl lg:text-5xl xl:text-6xl font-extrabold text-center text-white tracking-tight mb-6'>Frequently asked <br /> questions.</h2>
-            <p className='text-center text-white/50 text-lg mb-16 max-w-2xl mx-auto'>Everything you need to know about getting started with The Shams Media.</p>
+            <h3 className='text-neon text-xs md:text-sm font-bold tracking-[0.2em] uppercase text-center mb-3'>FAQ</h3>
+            <h2 className='text-3xl sm:text-4xl lg:text-5xl font-extrabold text-center text-white tracking-tight mb-4'>Frequently asked <br /> questions.</h2>
+            <p className='text-center text-white/50 text-base mb-10 max-w-2xl mx-auto'>Everything you need to know about getting started with The Shams Media.</p>
 
             <div className="w-full px-4 pt-4 space-y-4 max-w-5xl mx-auto">
                 {faqs.map((item, i) => (

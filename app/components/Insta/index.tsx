@@ -10,12 +10,12 @@ const instaImages = [
 
 const Insta = () => {
     return (
-        <div className="relative mx-auto max-w-2xl pb-24 px-4 sm:px-6 lg:max-w-7xl lg:px-8 overflow-hidden">
+        <div className="relative mx-auto max-w-2xl pb-12 lg:pb-20 px-4 sm:px-6 lg:max-w-7xl lg:px-8 overflow-hidden">
             {/* Section header */}
-            <div className="text-center mb-14">
-                <h3 className="text-neon text-sm md:text-base font-bold tracking-[0.2em] uppercase mb-4">FOLLOW US</h3>
-                <h2 className="text-4xl lg:text-5xl font-extrabold text-white tracking-tight">@theshams.media</h2>
-                <p className="mt-4 text-white/50 text-lg">Our latest work on Instagram</p>
+            <div className="text-center mb-8 lg:mb-12">
+                <h3 className="text-neon text-xs md:text-sm font-bold tracking-[0.2em] uppercase mb-3">FOLLOW US</h3>
+                <h2 className="text-3xl lg:text-4xl font-extrabold text-white tracking-tight">@theshams.media</h2>
+                <p className="mt-3 text-white/50 text-base">Our latest work on Instagram</p>
             </div>
 
             <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">

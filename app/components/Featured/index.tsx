@@ -85,14 +85,14 @@ export default class MultipleItems extends Component {
 
 
         return (
-            <div className="mx-auto max-w-7xl px-4 py-24 my-32 lg:px-10 relative" id="featured">
+            <div className="mx-auto max-w-7xl px-4 py-12 lg:py-20 my-12 lg:my-24 lg:px-10 relative" id="featured">
                 {/* Background ambient light */}
                 <div className="absolute top-0 right-0 w-1/2 h-full bg-soft/20 blur-[150px] pointer-events-none -z-10 rounded-full" />
                 
                 <div className='mx-auto max-w-7xl lg:px-2'>
-                    <div className="text-center pb-16">
-                        <h3 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight">Recent Works.</h3>
-                        <p className="mt-4 text-lg text-white/50 max-w-2xl mx-auto">Take a look at some of our most recent and exciting projects.</p>
+                    <div className="text-center pb-10 lg:pb-16">
+                        <h3 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white tracking-tight">Recent Works.</h3>
+                        <p className="mt-3 text-base lg:text-lg text-white/50 max-w-2xl mx-auto">Take a look at some of our most recent and exciting projects.</p>
                     </div>
 
                     <Slider {...settings}>

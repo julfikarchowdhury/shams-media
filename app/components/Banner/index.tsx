@@ -4,11 +4,11 @@ import { ArrowRightIcon } from '@heroicons/react/24/outline';
 
 const Banner = () => {
     return (
-        <div className='relative mx-auto max-w-7xl my-10 sm:py-10 px-6 lg:px-8'>
+        <div className='relative mx-auto max-w-7xl mt-6 mb-4 sm:py-8 px-6 lg:px-8'>
             {/* Background Glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-neon/15 blur-[120px] rounded-full pointer-events-none -z-10" />
 
-            <div className='grid grid-cols-1 lg:grid-cols-2 lg:my-16 gap-12 items-center'>
+            <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center'>
 
                 {/* COLUMN-1 */}
                 <div className="mx-auto sm:mx-0 flex flex-col justify-center text-center lg:text-start z-10">
@@ -19,13 +19,13 @@ const Banner = () => {
                     </div>
 
                     <div className="py-3">
-                        <h1 className="text-4xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.1]">
+                        <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white tracking-tight leading-[1.1]">
                             Get stunning visuals <br className="hidden lg:block"/> that make your{' '}
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon to-pink-500">
                                 brand shine.
                             </span>
                         </h1>
-                        <p className="mt-6 text-lg lg:text-2xl font-medium text-white/50 max-w-xl mx-auto lg:mx-0">
+                        <p className="mt-4 text-base lg:text-lg font-medium text-white/50 max-w-xl mx-auto lg:mx-0">
                             Skip the stress and save hours. We craft digital experiences that engage and convert.
                         </p>
                     </div>

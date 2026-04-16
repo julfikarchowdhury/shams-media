@@ -117,11 +117,11 @@ const OurServices = () => {
 
 
 
-        <div id="services-section" className="mx-auto max-w-7xl px-4 py-24 my-32 lg:px-10 relative">
+        <div id="services-section" className="mx-auto max-w-7xl px-4 py-12 lg:py-20 my-12 lg:my-24 lg:px-10 relative">
             {/* Ambient Background Lights */}
             <div className="absolute top-1/4 -left-32 w-96 h-96 bg-neon/10 blur-[150px] rounded-full pointer-events-none -z-10" />
             
-            <h4 className="text-center text-white text-4xl lg:text-6xl font-extrabold mb-10 tracking-tight">Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon to-pink-500">Services</span></h4>
+            <h4 className="text-center text-white text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-8 tracking-tight">Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon to-pink-500">Services</span></h4>
 
             {/* Tabs */}
             <div className="flex justify-center gap-4 mb-16">
@@ -146,9 +146,9 @@ const OurServices = () => {
             </div>
 
             {/* Services Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
                 {data.map((item, i) => (
-                    <div key={i} className='bg-white/5 backdrop-blur-md border border-white/10 hover:border-white/20 hover:bg-white/10 transition-all duration-300 rounded-[32px] pt-10 px-8 pb-10 group relative overflow-hidden h-full flex flex-col justify-start items-start w-full transform hover:-translate-y-1'>
+                    <div key={i} className='bg-white/5 backdrop-blur-md border border-white/10 hover:border-white/20 hover:bg-white/10 transition-all duration-300 rounded-[32px] pt-8 px-7 pb-8 group relative overflow-hidden h-full flex flex-col justify-start items-start w-full transform hover:-translate-y-1'>
                         {/* Hover glow */}
                         <div className="absolute top-0 right-0 w-32 h-32 bg-neon/10 blur-[50px] rounded-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         

@@ -1,16 +1,16 @@
 
 const Join = () => {
     return (
-        <div className="relative my-32 py-20 overflow-hidden">
+        <div className="relative my-12 lg:my-20 py-12 lg:py-16 overflow-hidden">
             {/* Ambient lighting */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-[400px] bg-neon/10 blur-[150px] rounded-full pointer-events-none -z-10" />
 
             <div className='mx-auto max-w-2xl lg:max-w-7xl sm:py-4 lg:px-8 relative z-10'>
 
-                <div className="text-center mb-16">
+                <div className="text-center mb-10">
                     <h3 className="text-neon text-sm md:text-base font-bold tracking-[0.2em] uppercase mb-4">JOIN US</h3>
-                    <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white my-6 tracking-tight"> Take your business to <br className="hidden sm:block"/> the new level.</h2>
-                    <p className="text-white/60 font-medium text-lg max-w-2xl mx-auto">Subscribe to our newsletter for exclusive insights, creative tips, and priority updates on our newest editing offerings to elevate your brand.</p>
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white my-4 tracking-tight"> Take your business to <br className="hidden sm:block"/> the new level.</h2>
+                    <p className="text-white/60 font-medium text-base max-w-2xl mx-auto">Subscribe to our newsletter for exclusive insights, creative tips, and priority updates on our newest editing offerings to elevate your brand.</p>
                 </div>
 
                 <div className="mx-auto max-w-4xl pt-5">
