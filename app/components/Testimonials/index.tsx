@@ -110,7 +110,7 @@ export default class MultipleItems extends Component {
 
                     <div className="text-center mb-20 lg:mb-24">
                         <h3 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white my-4 tracking-tight">Our clients, <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon to-pink-500">Their words.</span></h3>
-                        <p className="mt-4 text-lg text-white/50 max-w-2xl mx-auto">Don't just take our word for it. Here's what others have to say.</p>
+                        <p className="mt-4 text-lg text-white/50 max-w-2xl mx-auto">Don&apos;t just take our word for it. Here&apos;s what others have to say.</p>
                     </div>
 
                     <Slider {...settings}>
@@ -122,7 +122,7 @@ export default class MultipleItems extends Component {
                                         <Image src={items.imgSrc} alt={items.imgSrc} width={71} height={71} className="rounded-full bg-white/10" />
                                     </div>
                                     <div className="mt-6 mb-8 relative">
-                                        <div className="absolute -top-6 -left-4 text-6xl text-white/10 font-serif leading-none">"</div>
+                                        <div className="absolute -top-6 -left-4 text-6xl text-white/10 font-serif leading-none">&ldquo;</div>
                                         <h4 className='text-lg lg:text-xl font-medium text-white/80 relative z-10'>{items.comment}</h4>
                                     </div>
                                     <hr className="border-white/10 mb-6" />
