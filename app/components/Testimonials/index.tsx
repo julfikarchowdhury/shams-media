@@ -102,34 +102,41 @@ export default class MultipleItems extends Component {
 
 
         return (
-            <div className="bg-testimonial pt-40 pb-32 lg:py-32" id="testimonial-section">
-                <div className='mx-auto max-w-7xl sm:py-4 lg:px-8 '>
+            <div className="relative pt-40 pb-32 lg:py-32 overflow-hidden" id="testimonial-section">
+                {/* Background ambient lighting */}
+                <div className="absolute bottom-0 left-0 w-1/2 h-[500px] bg-soft/30 blur-[150px] pointer-events-none -z-10 rounded-full" />
+                
+                <div className='mx-auto max-w-7xl sm:py-4 lg:px-8 relative z-10'>
 
-                    <div className="text-center mb-24">
-                        {/* <h3 className="text-4xl sm:text-6xl font-bold text-black my-3">See what others are saying.</h3> */}
-                        <h3 className="text-4xl sm:text-6xl font-bold text-white my-4">Our clients, Their words.</h3>
-                        {/* <h3 className="text-4xl sm:text-6xl font-bold text-black text-opacity-25 lg:-mr-32 my-4">See what others are saying.</h3> */}
+                    <div className="text-center mb-20 lg:mb-24">
+                        <h3 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white my-4 tracking-tight">Our clients, <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon to-pink-500">Their words.</span></h3>
+                        <p className="mt-4 text-lg text-white/50 max-w-2xl mx-auto">Don't just take our word for it. Here's what others have to say.</p>
                     </div>
-
 
                     <Slider {...settings}>
                         {postData.map((items, i) => (
-                            <div key={i} className="relative drop-shadow-[0_0_5px_#2cb3e9]">
-                                <div className='bg-white test-sha m-3 p-10 my-20 rounded-3xl'>
-                                    <Image src={items.imgSrc} alt={items.imgSrc} width={71} height={71} className="inline-block m-auto absolute test-pos" />
-                                    <h4 className='text-base font-medium text-testColor my-4'>{items.comment}</h4>
-                                    <hr style={{ color: "lightgrey" }} />
-                                    <div className="flex justify-between">
+                            <div key={i} className="px-3">
+                                <div className='bg-white/5 border border-white/10 backdrop-blur-md p-8 lg:p-10 my-10 rounded-[32px] relative group hover:border-white/20 hover:bg-white/10 transition-all duration-300'>
+                                    {/* Glass avatar cutout simulation */}
+                                    <div className="absolute -top-10 left-10 p-2 bg-navyblue rounded-full">
+                                        <Image src={items.imgSrc} alt={items.imgSrc} width={71} height={71} className="rounded-full bg-white/10" />
+                                    </div>
+                                    <div className="mt-6 mb-8 relative">
+                                        <div className="absolute -top-6 -left-4 text-6xl text-white/10 font-serif leading-none">"</div>
+                                        <h4 className='text-lg lg:text-xl font-medium text-white/80 relative z-10'>{items.comment}</h4>
+                                    </div>
+                                    <hr className="border-white/10 mb-6" />
+                                    <div className="flex flex-col sm:flex-row justify-between sm:items-end gap-4">
                                         <div>
-                                            <h3 className='text-base font-medium pt-4 pb-2'>{items.name}</h3>
-                                            <h3 className='text-xs font-medium  pb-2 opacity-50'>{items.profession}</h3>
+                                            <h3 className='text-xl font-bold text-white'>{items.name}</h3>
+                                            <h3 className='text-sm font-medium text-white/50'>{items.profession}</h3>
                                         </div>
-                                        <div className="flex">
-                                            <StarIcon width={20} className="star" />
-                                            <StarIcon width={20} className="star" />
-                                            <StarIcon width={20} className="star" />
-                                            <StarIcon width={20} className="star" />
-                                            <StarIcon width={20} className="star" />
+                                        <div className="flex gap-1">
+                                            <StarIcon width={20} className="text-neon" />
+                                            <StarIcon width={20} className="text-neon" />
+                                            <StarIcon width={20} className="text-neon" />
+                                            <StarIcon width={20} className="text-neon" />
+                                            <StarIcon width={20} className="text-neon" />
                                         </div>
                                     </div>
                                 </div>

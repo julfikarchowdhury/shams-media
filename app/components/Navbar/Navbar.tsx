@@ -21,9 +21,7 @@ const navigation: NavigationItem[] = [
     { name: 'FAQ', href: '#faq-section', current: false },
 ]
 
-function classNames(...classes: string[]) {
-    return classes.filter(Boolean).join(' ')
-}
+
 
 const Navbar = () => {
 
@@ -32,52 +30,42 @@ const Navbar = () => {
     return (
         <Disclosure as="nav" className="navbar">
             <>
-                <div className="mx-auto max-w-7xl p-3 md:p-4 lg:px-8">
-                    <div className="relative flex h-12 items-center">
-                        <div className="flex flex-1 items-center sm:justify-between">
+                <div className="mx-auto max-w-7xl px-6 lg:px-8">
+                    <div className="relative flex h-20 items-center justify-between">
 
-                            {/* LOGO */}
+                        {/* LOGO */}
+                        <div className="flex flex-shrink-0 items-center">
+                            <Link href="/" className='flex items-center'>
+                                <Image src="/images/logo/logo.png" alt="logo" width={140} height={46} priority />
+                            </Link>
+                        </div>
 
-                            <div className="flex flex-shrink-0 items-center border-right">
-                                <Link href="/" className='text-2xl sm:text-4xl font-semibold text-white'>
-                                    <Image src="/images/logo/logo.png" alt="logo" width={150} height={50} />
+                        {/* LINKS - Desktop */}
+                        <div className="hidden lg:flex items-center gap-1 xl:gap-2">
+                            {navigation.map((item) => (
+                                <Link
+                                    key={item.name}
+                                    href={item.href}
+                                    className="relative px-4 py-2 rounded-full text-base font-medium text-white/70 hover:text-white transition-all duration-300 group"
+                                    aria-current={item.current ? 'page' : undefined}
+                                >
+                                    <span className="relative z-10">{item.name}</span>
+                                    <span className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 transition-all duration-300 rounded-full"></span>
                                 </Link>
-                            </div>
+                            ))}
+                        </div>
 
-                            {/* LINKS */}
-
-                            <div className="hidden lg:flex items-center border-right ">
-                                <div className="flex justify-end space-x-4">
-                                    {navigation.map((item) => (
-                                        <Link
-                                            key={item.name}
-                                            href={item.href}
-                                            className={classNames(
-                                                item.current ? 'bg-neon' : 'navlinks',
-                                                'px-3 py-4 rounded-md text-lg font-normal text-white'
-                                            )}
-                                            aria-current={item.href ? 'page' : undefined}
-                                        >
-                                            {item.name}
-                                        </Link>
-                                    ))}
-                                </div>
-                            </div>
-                            {/* <button className='hidden lg:flex justify-end text-xl font-semibold bg-transparent py-4 px-6 lg:px-12 navbutton rounded-full hover:bg-navyblue hover:text-white'>Contact us</button> */}
+                        {/* CTA button */}
+                        <div className="hidden lg:block">
                             <Contactusform />
                         </div>
 
-
-                        {/* DRAWER FOR MOBILE VIEW */}
-
-                        {/* DRAWER ICON */}
-
+                        {/* DRAWER ICON - Mobile */}
                         <div className='block lg:hidden'>
-                            <Bars3Icon className="block h-6 w-6" aria-hidden="true" onClick={() => setIsOpen(true)} />
+                            <Bars3Icon className="block h-7 w-7 text-white cursor-pointer" aria-hidden="true" onClick={() => setIsOpen(true)} />
                         </div>
 
                         {/* DRAWER LINKS DATA */}
-
                         <Drawer isOpen={isOpen} setIsOpen={setIsOpen}>
                             <Drawerdata />
                         </Drawer>

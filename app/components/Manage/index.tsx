@@ -82,7 +82,7 @@ const names = [
 ]
 
 const Manage = () => {
-    
+
     const [enabled, setEnabled] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState('monthly');
 

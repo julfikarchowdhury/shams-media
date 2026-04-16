@@ -11,53 +11,25 @@
 body {
   margin: 0;
   font-family: 'Urbanist', sans-serif;
-  background-color: #010f20;
+  background-color: #081320;
   color: #ffffff;
 }
 
 .text-neon {
-  color: #2cb3e9 !important;
+  color: #FF3333 !important;
 }
 .text-soft {
-  color: #062a57 !important;
+  color: #0C1B2E !important;
 }
 .bg-soft{
-  background-color:#062a57  ;
-}
-html:not([data-scroll="0"]) .navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: white !important;
-  opacity: 0.95;
-  /* 1.9 is invalid (CSS max = 1) */
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
-  transition: all 0.4s linear;
-  padding: 0 !important;
-  z-index: 50;
-  /* higher for safety */
-}
-
-html:not([data-scroll="0"]) .navbar>div>div {
-  height: 3rem;
-}
-
-html:not([data-scroll="0"]) .border-right {
-  height: 4rem;
-}
-
-html:not([data-scroll="0"]) .navlinks {
-  color: rgb(1, 15, 32,.75);
+  background-color:#0C1B2E  ;
 }
 html {
-  --scroll-behavior: smooth !important;
-  scroll-behavior: smooth !important;
+  scroll-behavior: smooth;
 }
 
 .navbar {
-  border-bottom: 0.5px solid rgba(196, 196, 196, 0.75);
-  ;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hover-underline {
@@ -128,10 +100,12 @@ html {
 
 .navbutton {
   border: 1px solid rgba(0, 0, 0, 0.35);
+  transition: all 0.3s ease;
 }
 
 .navlinks {
   color: rgba(255, 255, 255, 0.75);
+  transition: color 0.3s ease;
 }
 
 .bg-digital {
@@ -273,7 +247,9 @@ html {
 }
 
 .footer-icons:hover {
-  transform: translateY(-8px);
+  transform: translateY(-8px) scale(1.1);
+  background-color: #FF3333;
+  box-shadow: 0px 10px 20px rgba(255, 51, 51, 0.4);
 }
 
 .space-links {
@@ -282,6 +258,7 @@ html {
 
 .space-links:hover {
   letter-spacing: 1px;
+  color: #FF3333 !important;
 }
 
 .dance-text {

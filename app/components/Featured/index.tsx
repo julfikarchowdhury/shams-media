@@ -85,35 +85,40 @@ export default class MultipleItems extends Component {
 
 
         return (
-            <div className=" mx-auto max-w-7xl px-4 py-24 my-32 lg:px-10  bg-featured  rounded-3xl " id="featured">
-                <div className='mx-auto max-w-7xl lg:px-2 '>
-
-                    <div className="text-center pb-10">
-                        <h3 className="text-4xl sm:text-6xl font-bold text-white my-2">Recent Works.</h3>
-                        {/* <h3 className="text-4xl sm:text-6xl font-bold text-white text-opacity-50 lg:mr-48 my-2">Recent Works.</h3>
-                        <h3 className="text-4xl sm:text-6xl font-bold text-white text-opacity-25 lg:-mr-32 my-2">Recent Works.</h3> */}
+            <div className="mx-auto max-w-7xl px-4 py-24 my-32 lg:px-10 relative" id="featured">
+                {/* Background ambient light */}
+                <div className="absolute top-0 right-0 w-1/2 h-full bg-soft/20 blur-[150px] pointer-events-none -z-10 rounded-full" />
+                
+                <div className='mx-auto max-w-7xl lg:px-2'>
+                    <div className="text-center pb-16">
+                        <h3 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight">Recent Works.</h3>
+                        <p className="mt-4 text-lg text-white/50 max-w-2xl mx-auto">Take a look at some of our most recent and exciting projects.</p>
                     </div>
 
                     <Slider {...settings}>
                         {postData.map((items, i) => (
-                            <div key={i}>
-
-                                <div className='bg-transparent m-3 pb-12 my-10 rounded-3xl'>
-                                    <Image src={items.imgSrc} alt="gaby" width={636} height={620} className="rounded-2xl drop-shadow-[0_0_5px_#2cb3e9]" />
-                             <div className="w-auto text-center">
-  <h4 className="sm:text-5xl font-bold sm:pt-6 mt-10 text-white">
-    {items.heading}
-  </h4>
-</div>
-
+                            <div key={i} className="px-3">
+                                <div className='group relative bg-white/5 backdrop-blur-md border border-white/10 p-6 my-10 rounded-[32px] overflow-hidden hover:bg-white/10 transition-colors duration-500'>
+                                    {/* Abstract glow inside card */}
+                                    <div className="absolute -top-20 -right-20 w-40 h-40 bg-neon/20 blur-[60px] rounded-full pointer-events-none transition-opacity duration-500 opacity-50 group-hover:opacity-100" />
+                                    
+                                    <div className="relative rounded-2xl overflow-hidden aspect-[4/3] mb-8">
+                                        <Image src={items.imgSrc} alt="project-image" layout="fill" objectFit="cover" className="transform group-hover:scale-105 transition-transform duration-700" />
+                                    </div>
+                                    <div className="w-full text-center relative z-10 px-4">
+                                        <h4 className="text-2xl sm:text-3xl font-bold text-white mb-4 line-clamp-2">
+                                            {items.heading}
+                                        </h4>
+                                        <div className="inline-flex items-center text-neon font-semibold text-sm tracking-widest uppercase cursor-pointer hover:text-white transition-colors">
+                                            View Project <span className="ml-2">→</span>
+                                        </div>
+                                    </div>
                                 </div>
-
                             </div>
                         ))}
                     </Slider>
                 </div>
             </div>
-
         );
     }
 }

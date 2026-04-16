@@ -118,26 +118,27 @@ const OurServices = () => {
 
 
         <div id="services-section" className="mx-auto max-w-7xl px-4 py-24 my-32 lg:px-10 relative">
-            <Image src="/images/aboutus/dots.svg" width={100} height={100} alt="dots-image" className="absolute bottom-1 -left-20" />
-
-            <h4 className="text-center text-blue text-4xl lg:text-6xl font-bold mb-10">Our Services</h4>
+            {/* Ambient Background Lights */}
+            <div className="absolute top-1/4 -left-32 w-96 h-96 bg-neon/10 blur-[150px] rounded-full pointer-events-none -z-10" />
+            
+            <h4 className="text-center text-white text-4xl lg:text-6xl font-extrabold mb-10 tracking-tight">Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon to-pink-500">Services</span></h4>
 
             {/* Tabs */}
-            <div className="flex justify-center gap-6 mb-0">
+            <div className="flex justify-center gap-4 mb-16">
                 <button
                     onClick={() => setActiveTab("video")}
-                    className={`px-6 py-2 rounded-full text-lg font-medium transition ${activeTab === "video"
-                        ? "bg-soft text-white shadow-lg"
-                        : "bg-lightgrey text-darkpurple hover:bg-soft hover:text-black"
+                    className={`px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 ${activeTab === "video"
+                        ? "bg-neon text-white shadow-[0_0_20px_rgba(255,51,51,0.5)]"
+                        : "bg-white/5 text-white/70 hover:bg-white/10 hover:text-white border border-white/10"
                         }`}
                 >
                     Video Editing
                 </button>
                 <button
                     onClick={() => setActiveTab("image")}
-                    className={`px-6 py-2 rounded-full text-lg font-medium transition ${activeTab === "image"
-                        ? "bg-soft text-white shadow-lg"
-                        : "bg-lightgrey text-darkpurple hover:bg-soft hover:text-black"
+                    className={`px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 ${activeTab === "image"
+                        ? "bg-neon text-white shadow-[0_0_20px_rgba(255,51,51,0.5)]"
+                        : "bg-white/5 text-white/70 hover:bg-white/10 hover:text-white border border-white/10"
                         }`}
                 >
                     Image Editing
@@ -147,16 +148,16 @@ const OurServices = () => {
             {/* Services Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
                 {data.map((item, i) => (
-                    <div key={i} className='bg-white rounded-3xl mt-16 pt-10 pl-8 pb-10 pr-6 drop-shadow-[0_0_3px_white] group'>
-                        <h4 className='text-4xl font-semibold mb-5 text-black'>{item.heading}</h4>
-                        <Image src={item.imgSrc} alt={item.imgSrc} width={100} height={100} className="mb-5" />
-                        <h4 className='text-lg font-normal text-black mb-5'>{item.paragraph}</h4>
-                        {/* <Link href="#" className='text-lg font-semibold text-white hover-underline'>
-                            {item.link}
-                            <ChevronRightIcon width={20} height={20} />
-                        </Link> */}
+                    <div key={i} className='bg-white/5 backdrop-blur-md border border-white/10 hover:border-white/20 hover:bg-white/10 transition-all duration-300 rounded-[32px] pt-10 px-8 pb-10 group relative overflow-hidden h-full flex flex-col justify-start items-start w-full transform hover:-translate-y-1'>
+                        {/* Hover glow */}
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-neon/10 blur-[50px] rounded-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        
+                        <div className="bg-white/10 p-4 rounded-2xl mb-6">
+                            <Image src={item.imgSrc} alt={item.heading} width={64} height={64} className="group-hover:scale-110 transition-transform duration-500" />
+                        </div>
+                        <h4 className='text-3xl font-bold mb-4 text-white'>{item.heading}</h4>
+                        <p className='text-lg font-medium text-white/60 mb-5 flex-grow'>{item.paragraph}</p>
                     </div>
-
                 ))}
             </div>
         </div>

@@ -50,8 +50,9 @@ const Contactusform = () => {
                     </button>
                 </div> */}
                 <div className='hidden lg:block'>
-                    <button type="button" className='justify-end text-xl font-semibold py-4 px-6 lg:px-12 navbutton rounded-full bg-soft text-white' onClick={openModal}>
-                        Contact Us
+                    <button type="button" className='group relative flex items-center justify-center text-lg lg:text-xl font-semibold py-3 px-6 lg:px-10 rounded-full bg-soft text-white overflow-hidden shadow-[0_4px_15px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_25px_rgba(255,51,51,0.4)] hover:bg-neon transition-all duration-300 hover:-translate-y-1 border border-white/10' onClick={openModal}>
+                        <span className="relative z-10">Contact Us</span>
+                        <div className="absolute inset-0 h-full w-full bg-white/20 scale-0 group-hover:scale-100 transition-transform duration-300 rounded-full" />
                     </button>
                 </div>
             </div>
