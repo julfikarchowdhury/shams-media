@@ -8,6 +8,7 @@ import { BeforeAfter } from "@/sections/BeforeAfter";
 import { Portfolio } from "@/sections/Portfolio";
 import { Statistics } from "@/sections/Statistics";
 import { Testimonials } from "@/sections/Testimonials";
+import { Industries } from "@/sections/Industries";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       <BeforeAfter />
       <Statistics />
       <Testimonials />
+      <Industries />
     </main>
   );
 }
