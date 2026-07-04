@@ -3,6 +3,8 @@ import "@fontsource-variable/inter";
 import "@fontsource-variable/syne";
 import "./globals.css";
 
+import { Navbar } from "@/components/Navbar";
+
 export const metadata: Metadata = {
   title: {
     default: "Shams Media — Premium Creative Editing Agency",
@@ -35,6 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <body className="min-h-full flex flex-col antialiased">
+        <Navbar />
         {children}
       </body>
     </html>
