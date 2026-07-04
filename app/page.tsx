@@ -9,6 +9,7 @@ import { Portfolio } from "@/sections/Portfolio";
 import { Statistics } from "@/sections/Statistics";
 import { Testimonials } from "@/sections/Testimonials";
 import { Industries } from "@/sections/Industries";
+import { FAQ } from "@/sections/FAQ";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       <Statistics />
       <Testimonials />
       <Industries />
+      <FAQ />
     </main>
   );
 }
