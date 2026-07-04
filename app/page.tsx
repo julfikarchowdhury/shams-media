@@ -1,6 +1,7 @@
 import { Hero } from "@/sections/Hero";
 import { TrustedBy } from "@/sections/TrustedBy";
 import { FeaturedReel } from "@/sections/FeaturedReel";
+import { Services } from "@/sections/Services";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <Hero />
       <TrustedBy />
       <FeaturedReel />
+      <Services />
     </main>
   );
 }
