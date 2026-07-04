@@ -6,6 +6,7 @@ import { WhyChooseUs } from "@/sections/WhyChooseUs";
 import { Process } from "@/sections/Process";
 import { BeforeAfter } from "@/sections/BeforeAfter";
 import { Portfolio } from "@/sections/Portfolio";
+import { Statistics } from "@/sections/Statistics";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <WhyChooseUs />
       <Process />
       <BeforeAfter />
+      <Statistics />
     </main>
   );
 }
