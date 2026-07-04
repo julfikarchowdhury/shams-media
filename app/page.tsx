@@ -4,6 +4,7 @@ import { FeaturedReel } from "@/sections/FeaturedReel";
 import { Services } from "@/sections/Services";
 import { WhyChooseUs } from "@/sections/WhyChooseUs";
 import { Process } from "@/sections/Process";
+import { BeforeAfter } from "@/sections/BeforeAfter";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <Services />
       <WhyChooseUs />
       <Process />
+      <BeforeAfter />
     </main>
   );
 }
