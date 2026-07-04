@@ -7,6 +7,7 @@ import { Process } from "@/sections/Process";
 import { BeforeAfter } from "@/sections/BeforeAfter";
 import { Portfolio } from "@/sections/Portfolio";
 import { Statistics } from "@/sections/Statistics";
+import { Testimonials } from "@/sections/Testimonials";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <Process />
       <BeforeAfter />
       <Statistics />
+      <Testimonials />
     </main>
   );
 }
