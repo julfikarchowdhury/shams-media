@@ -4,6 +4,7 @@ import "@fontsource-variable/syne";
 import "./globals.css";
 
 import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: {
@@ -39,7 +40,9 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col antialiased">
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
 }
+
