@@ -8,23 +8,43 @@ import { cn } from "@/lib/cn";
 /*  Counter Hook                                                              */
 /* -------------------------------------------------------------------------- */
 
-function useCountUp(target: number, duration = 2000) {
+function useCountUp(target: number, duration = 2000, start = false) {
   const [count, setCount] = useState(0);
+
   useEffect(() => {
-    let start = 0;
-    const startTimestamp = performance.now();
+    if (!start) return;
+
+    let startTimestamp: number | null = null;
+    let animationFrame: number;
+
     const step = (timestamp: number) => {
+      if (!startTimestamp) startTimestamp = timestamp;
       const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+
       setCount(Math.floor(progress * target));
+
       if (progress < 1) {
-        requestAnimationFrame(step);
+        animationFrame = requestAnimationFrame(step);
       }
     };
-    requestAnimationFrame(step);
-    // cleanup
-    return () => setCount(target);
-  }, [target, duration]);
+
+    animationFrame = requestAnimationFrame(step);
+
+    return () => cancelAnimationFrame(animationFrame);
+  }, [target, duration, start]);
+
   return count;
+}
+
+function formatStat(num: number) {
+  if (num >= 1_000_000) {
+    const millions = num / 1_000_000;
+    return `${millions % 1 === 0 ? millions.toFixed(0) : millions.toFixed(1)}M+`;
+  }
+  if (num >= 10_000) {
+    return `${Math.round(num / 1000)}K+`;
+  }
+  return num.toLocaleString();
 }
 
 /* -------------------------------------------------------------------------- */
@@ -57,27 +77,21 @@ export default function Statistics() {
     }
   }, [isInView, controls]);
 
-  // Target numbers – replace with real data later
-  const projects = useCountUp(182);
-  const clients = useCountUp(97);
-  const countries = useCountUp(12);
-  const views = useCountUp(1245000);
-
-  const formatNumber = (num: number) => {
-    return num.toLocaleString();
-  };
+  const projects = useCountUp(182, 2000, isInView);
+  const clients = useCountUp(97, 2000, isInView);
+  const countries = useCountUp(12, 2000, isInView);
+  const views = useCountUp(1_245_000, 2000, isInView);
 
   const stats = [
-    { id: 1, label: "Projects Completed", value: formatNumber(projects) },
-    { id: 2, label: "Clients Served", value: formatNumber(clients) },
-    { id: 3, label: "Countries Reached", value: formatNumber(countries) },
-    { id: 4, label: "Views Generated", value: formatNumber(views) },
+    { id: 1, label: "Projects Completed", value: formatStat(projects) },
+    { id: 2, label: "Clients Served", value: formatStat(clients) },
+    { id: 3, label: "Countries Reached", value: formatStat(countries) },
+    { id: 4, label: "Views Generated", value: formatStat(views) },
   ];
 
   return (
     <section ref={ref} className="section bg-navy-950 relative overflow-hidden" id="statistics">
-      <div className="container-site relative z-10 py-16">
-        {/* Header */}
+      <div className="container-site relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -92,9 +106,8 @@ export default function Statistics() {
           </h2>
         </motion.div>
 
-        {/* Stats Grid */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6"
           variants={containerVariants}
           initial="hidden"
           animate={controls}
@@ -104,14 +117,22 @@ export default function Statistics() {
               key={stat.id}
               variants={itemVariants}
               className={cn(
-                "flex flex-col items-center text-center p-6 rounded-xl bg-navy-900 border border-navy-800 shadow-lg",
+                "flex flex-col items-center justify-center text-center",
+                "min-w-0 w-full overflow-hidden",
+                "px-4 py-8 rounded-xl bg-navy-900 border border-navy-800 shadow-lg",
                 "group hover:shadow-2xl transition-shadow duration-300"
               )}
             >
-              <p className="text-display-xl font-bold text-brick-500 mb-2 transition-colors group-hover:text-brick-400">
+              <p
+                className={cn(
+                  "font-display font-bold text-brick-500 mb-2 tabular-nums",
+                  "text-4xl md:text-5xl leading-none tracking-tight",
+                  "w-full truncate transition-colors group-hover:text-brick-400"
+                )}
+              >
                 {stat.value}
               </p>
-              <p className="text-label text-gray-400 uppercase tracking-wider">
+              <p className="text-label text-gray-400 uppercase tracking-wider px-1">
                 {stat.label}
               </p>
             </motion.div>

@@ -84,7 +84,7 @@ export default function Testimonials() {
 
   return (
     <section className="section bg-navy-950 relative overflow-hidden" id="testimonials">
-      <div className="container-site relative z-10 py-16">
+      <div className="container-site relative z-10">
         {/* Header */}
         <motion.div
           variants={containerVariants}

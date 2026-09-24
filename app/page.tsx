@@ -1,11 +1,11 @@
 import { Hero } from "@/sections/Hero";
 import { TrustedBy } from "@/sections/TrustedBy";
 import { FeaturedReel } from "@/sections/FeaturedReel";
+import { Portfolio } from "@/sections/Portfolio";
+import { BeforeAfter } from "@/sections/BeforeAfter";
 import { Services } from "@/sections/Services";
 import { WhyChooseUs } from "@/sections/WhyChooseUs";
 import { Process } from "@/sections/Process";
-import { BeforeAfter } from "@/sections/BeforeAfter";
-import { Portfolio } from "@/sections/Portfolio";
 import { Statistics } from "@/sections/Statistics";
 import { Testimonials } from "@/sections/Testimonials";
 import { Industries } from "@/sections/Industries";
@@ -19,10 +19,10 @@ export default function Home() {
       <TrustedBy />
       <FeaturedReel />
       <Portfolio />
+      <BeforeAfter />
       <Services />
       <WhyChooseUs />
       <Process />
-      <BeforeAfter />
       <Statistics />
       <Testimonials />
       <Industries />

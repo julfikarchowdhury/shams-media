@@ -70,7 +70,7 @@ const staggerContainer: Variants = {
 
 export default function FeaturedReel() {
   return (
-    <section className="section bg-background" id="portfolio">
+    <section className="section bg-background" id="reel">
       <div className="container-site">
         
         {/* Section Header */}
@@ -83,7 +83,7 @@ export default function FeaturedReel() {
         >
           <div className="max-w-2xl">
             <span className="text-label text-brick-500 mb-2 block tracking-widest uppercase">
-              Selected Work
+              Featured Reel
             </span>
             <h2 className="text-display-lg text-balance">
               Stories that demand <span className="gradient-text-white">attention.</span>

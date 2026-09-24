@@ -10,17 +10,33 @@ import { BeforeAfterSlider } from "@/components/BeforeAfterSlider";
 const comparisonData = [
   {
     id: 1,
+    title: "Product Photo Cleanup",
+    description: "Clean backgrounds, color correction, and polish that make e-commerce stills shelf-ready.",
+    beforeImage: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80&w=2000&sat=-80&contrast=-40",
+    afterImage: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80&w=2000",
+    beforeLabel: "RAW STILL",
+    afterLabel: "RETOUCHED",
+  },
+  {
+    id: 2,
+    title: "Beauty Retouch",
+    description: "Natural skin refinement and tonal balance — editorial polish without looking plastic.",
+    beforeImage: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=2000&sat=-60&contrast=-30",
+    afterImage: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=2000",
+    beforeLabel: "BEFORE",
+    afterLabel: "AFTER",
+  },
+  {
+    id: 3,
     title: "Cinematic Color Grading",
     description: "Transforming flat, LOG footage into a vibrant, moody masterpiece.",
-    // Using two versions of the same Unsplash image for a mock before/after (one grayscale/flat, one vibrant)
-    // Here we'll just use two different images for demonstration since we don't have actual raw footage
     beforeImage: "https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&q=80&w=2000&sat=-100&contrast=-50",
     afterImage: "https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&q=80&w=2000",
     beforeLabel: "RAW LOG",
     afterLabel: "GRADED",
   },
   {
-    id: 2,
+    id: 4,
     title: "VFX & Compositing",
     description: "Seamlessly integrating 3D elements and removing unwanted background objects.",
     beforeImage: "https://images.unsplash.com/photo-1551244072-5d12893278ab?auto=format&fit=crop&q=80&w=2000&sat=-50",
@@ -57,7 +73,7 @@ const staggerContainer: Variants = {
 
 export default function BeforeAfterSection() {
   return (
-    <section className="section bg-background relative overflow-hidden" id="work">
+    <section className="section bg-background relative overflow-hidden" id="transformations">
       <div className="container-site relative z-10">
         
         {/* Section Header */}

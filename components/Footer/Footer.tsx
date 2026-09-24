@@ -6,12 +6,12 @@ import { AtSign, Send, Video, Globe, Mail, Phone, MapPin } from "lucide-react";
 /* -------------------------------------------------------------------------- */
 
 const navLinks = [
-  { label: "Home", href: "#" },
-  { label: "Portfolio", href: "#work-grid" },
+  { label: "Home", href: "#home" },
+  { label: "Portfolio", href: "#portfolio" },
   { label: "Services", href: "#services" },
   { label: "Process", href: "#process" },
   { label: "FAQ", href: "#faq" },
-  { label: "Contact", href: "#start-project" },
+  { label: "Contact", href: "#contact" },
 ];
 
 const socialLinks = [
@@ -35,7 +35,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-navy-950 overflow-hidden" id="contact">
+    <footer className="relative bg-navy-950 overflow-hidden">
       {/* ── Grain texture ──────────────────────────────────────────────────── */}
       <div
         aria-hidden

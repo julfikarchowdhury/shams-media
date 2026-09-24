@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
+import { MagneticButton } from "@/components/MagneticButton";
 
 /* -------------------------------------------------------------------------- */
 /*  Variants                                                                   */
@@ -44,7 +45,7 @@ export default function CTA() {
     <section
       ref={sectionRef}
       className="relative overflow-hidden bg-background py-32 md:py-44"
-      id="start-project"
+      id="contact"
     >
       {/* ── Animated gradient orbs ─────────────────────────────────────────── */}
       <motion.div
@@ -129,29 +130,31 @@ export default function CTA() {
             className="flex flex-col sm:flex-row items-center gap-4 mt-2"
           >
             {/* Primary */}
-            <motion.a
-              href="#contact"
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
-              transition={{ type: "spring", stiffness: 300, damping: 22 }}
-              className="group inline-flex items-center gap-3 px-8 py-4 rounded-full
-                         bg-brick-600 hover:bg-brick-500 text-white font-semibold text-lg
-                         shadow-[0_0_40px_rgba(178,58,46,0.35)] hover:shadow-[0_0_60px_rgba(178,58,46,0.55)]
-                         transition-all duration-300"
-            >
-              Start Your Project
-              <motion.span
-                className="inline-flex"
-                animate={{ x: [0, 4, 0] }}
-                transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
+            <MagneticButton>
+              <motion.a
+                href="#contact"
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ type: "spring", stiffness: 300, damping: 22 }}
+                className="group inline-flex items-center gap-3 px-8 py-4 rounded-full
+                           bg-brick-600 hover:bg-brick-500 text-white font-semibold text-lg
+                           shadow-[0_0_40px_rgba(178,58,46,0.35)] hover:shadow-[0_0_60px_rgba(178,58,46,0.55)]
+                           transition-all duration-300"
               >
-                <ArrowRight size={20} />
-              </motion.span>
-            </motion.a>
+                Start Your Project
+                <motion.span
+                  className="inline-flex"
+                  animate={{ x: [0, 4, 0] }}
+                  transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
+                >
+                  <ArrowRight size={20} />
+                </motion.span>
+              </motion.a>
+            </MagneticButton>
 
             {/* Secondary */}
             <motion.a
-              href="#work"
+              href="#portfolio"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               transition={{ type: "spring", stiffness: 300, damping: 22 }}
