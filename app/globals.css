@@ -936,3 +936,38 @@ body::before {
     border-width: 0;
   }
 }
+
+/* --------------------------------------------------------------------------
+   11. PORTFOLIO MARQUEE COLUMNS
+   -------------------------------------------------------------------------- */
+
+@keyframes marquee-up {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-50%); }
+}
+
+@keyframes marquee-down {
+  from { transform: translateY(-50%); }
+  to   { transform: translateY(0); }
+}
+
+.marquee-track {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  will-change: transform;
+}
+
+.marquee-track--up {
+  animation: marquee-up 35s linear infinite;
+}
+
+.marquee-track--down {
+  animation: marquee-down 35s linear infinite;
+}
+
+.marquee-track:hover,
+.marquee-track--up:hover,
+.marquee-track--down:hover {
+  animation-play-state: paused;
+}

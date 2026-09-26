@@ -1,7 +1,6 @@
-"use client";
+﻿"use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
-import { MoveHorizontal } from "lucide-react";
 import { cn } from "@/lib/cn";
 
 interface BeforeAfterSliderProps {
@@ -14,11 +13,12 @@ interface BeforeAfterSliderProps {
 export function BeforeAfterSlider({
   beforeImage,
   afterImage,
-  beforeLabel = "Raw",
-  afterLabel = "Graded",
+  beforeLabel = "Before",
+  afterLabel = "After",
 }: BeforeAfterSliderProps) {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const handleMove = useCallback(
@@ -26,11 +26,11 @@ export function BeforeAfterSlider({
       if (!containerRef.current) return;
       const rect = containerRef.current.getBoundingClientRect();
       const x = clientX - rect.left;
-      // Calculate percentage, constrain between 0 and 100
-      const pos = Math.max(0, Math.min(100, (x / rect.width) * 100));
+      const pos = Math.max(2, Math.min(98, (x / rect.width) * 100));
       setSliderPosition(pos);
+      if (!hasInteracted) setHasInteracted(true);
     },
-    []
+    [hasInteracted]
   );
 
   const handleMouseMove = useCallback(
@@ -44,6 +44,7 @@ export function BeforeAfterSlider({
   const handleTouchMove = useCallback(
     (e: TouchEvent) => {
       if (!isDragging) return;
+      e.preventDefault();
       handleMove(e.touches[0].clientX);
     },
     [isDragging, handleMove]
@@ -78,9 +79,10 @@ export function BeforeAfterSlider({
     <div
       ref={containerRef}
       className={cn(
-        "relative w-full aspect-video md:aspect-[21/9] rounded-2xl overflow-hidden cursor-ew-resize select-none group",
-        "bg-navy-900 border border-navy-800 shadow-2xl"
+        "relative w-full rounded-2xl overflow-hidden cursor-ew-resize select-none",
+        "bg-navy-900 shadow-2xl"
       )}
+      style={{ aspectRatio: "3/2" }}
       onMouseDown={(e) => {
         setIsDragging(true);
         handleMove(e.clientX);
@@ -90,37 +92,102 @@ export function BeforeAfterSlider({
         handleMove(e.touches[0].clientX);
       }}
     >
-      {/* Background Image (Before) */}
+      {/* Before image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${beforeImage})` }}
-      >
-        <div className="absolute top-4 left-4 md:top-6 md:left-6 px-3 py-1 rounded-md bg-black/60 backdrop-blur-md text-white text-xs font-mono uppercase tracking-wider z-10 opacity-0 group-hover:opacity-100 transition-opacity">
-          {beforeLabel}
-        </div>
-      </div>
+      />
 
-      {/* Foreground Image (After) - Clipped */}
+      {/* After image - clipped */}
       <div
         className="absolute inset-0 bg-cover bg-center pointer-events-none"
         style={{
           backgroundImage: `url(${afterImage})`,
           clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)`,
         }}
+      />
+
+      {/* Divider line with glow */}
+      <div
+        className="absolute top-0 bottom-0 z-20 pointer-events-none"
+        style={{
+          left: `${sliderPosition}%`,
+          width: "2px",
+          transform: "translateX(-50%)",
+          background: "rgba(255,255,255,0.9)",
+          boxShadow: "0 0 14px 3px rgba(255,255,255,0.25), 0 0 3px 1px rgba(178,58,46,0.5)",
+        }}
+      />
+
+      {/* Handle */}
+      <div
+        className="absolute top-1/2 z-30 pointer-events-none"
+        style={{
+          left: `${sliderPosition}%`,
+          transform: "translate(-50%, -50%)",
+        }}
       >
-        <div className="absolute top-4 right-4 md:top-6 md:right-6 px-3 py-1 rounded-md bg-brick-600/80 backdrop-blur-md text-white text-xs font-mono uppercase tracking-wider z-10 opacity-0 group-hover:opacity-100 transition-opacity">
-          {afterLabel}
+        <div
+          className="w-11 h-11 rounded-full flex items-center justify-center"
+          style={{
+            background: "rgba(255,255,255,0.97)",
+            boxShadow: "0 4px 20px rgba(0,0,0,0.4), 0 0 0 3px rgba(178,58,46,0.2)",
+          }}
+        >
+          <svg width="20" height="12" viewBox="0 0 20 12" fill="none">
+            <path d="M1 6H19M1 6L5 2M1 6L5 10M19 6L15 2M19 6L15 10"
+              stroke="#1e293b" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
         </div>
       </div>
 
-      {/* Slider Handle */}
+      {/* BEFORE badge — always visible, bottom-left, outside clip context */}
+      <div className="absolute bottom-4 left-4 z-30 pointer-events-none">
+        <span
+          className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-mono font-semibold uppercase tracking-widest"
+          style={{
+            background: "rgba(0,0,0,0.6)",
+            backdropFilter: "blur(10px)",
+            WebkitBackdropFilter: "blur(10px)",
+            color: "#e5e7eb",
+            border: "1px solid rgba(255,255,255,0.18)",
+          }}
+        >
+          {beforeLabel}
+        </span>
+      </div>
+
+      {/* AFTER badge — always visible, bottom-right, outside clip context */}
+      <div className="absolute bottom-4 right-4 z-30 pointer-events-none">
+        <span
+          className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-mono font-semibold uppercase tracking-widest"
+          style={{
+            background: "rgba(178,58,46,0.85)",
+            backdropFilter: "blur(10px)",
+            WebkitBackdropFilter: "blur(10px)",
+            color: "#fff",
+            border: "1px solid rgba(220,80,60,0.5)",
+            boxShadow: "0 2px 16px rgba(178,58,46,0.35)",
+          }}
+        >
+          {afterLabel}
+        </span>
+      </div>
+
+      {/* Drag hint — fades after first interaction */}
       <div
-        className="absolute top-0 bottom-0 w-1 bg-white pointer-events-none shadow-[0_0_10px_rgba(0,0,0,0.5)] z-20"
-        style={{ left: `${sliderPosition}%`, transform: "translateX(-50%)" }}
+        className="absolute inset-0 flex items-end justify-center pb-16 z-10 pointer-events-none transition-opacity duration-500"
+        style={{ opacity: hasInteracted ? 0 : 1 }}
       >
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 bg-white rounded-full flex items-center justify-center shadow-xl border border-gray-200">
-          <MoveHorizontal size={18} className="text-navy-900" />
-        </div>
+        <span
+          className="text-xs font-mono uppercase tracking-[0.2em]"
+          style={{
+            color: "rgba(255,255,255,0.45)",
+            textShadow: "0 1px 6px rgba(0,0,0,0.9)",
+          }}
+        >
+          ← drag to compare →
+        </span>
       </div>
     </div>
   );

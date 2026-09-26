@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Play } from "lucide-react";
-import { cn } from "@/lib/cn";
+import Image from "next/image";
+import { Play, X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
 
 /* -------------------------------------------------------------------------- */
 /*  Data                                                                       */
@@ -11,134 +11,414 @@ import { cn } from "@/lib/cn";
 
 type Medium = "Image" | "Video";
 
-const categories = ["All", "Image", "Video"] as const;
-
-const portfolioData: {
+const portfolioItems: {
   id: number;
   title: string;
   category: string;
   medium: Medium;
-  image: string;
-  height: string;
+  src: string;
+  poster?: string;
 }[] = [
-  // Video — unique from FeaturedReel hero titles where possible
   {
     id: 1,
-    title: "Urban Pulse",
-    category: "Commercial",
-    medium: "Video",
-    image: "https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&q=80&w=800",
-    height: "h-[300px]",
+    title: "Poolside Editorial",
+    category: "Fashion",
+    medium: "Image",
+    src: "/assets/portfolio/poolside-fashion.jpg",
   },
   {
     id: 2,
-    title: "Silent Horizon",
-    category: "Short Film",
-    medium: "Video",
-    image: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&q=80&w=800",
-    height: "h-[400px]",
+    title: "Studio Glamour",
+    category: "Beauty Retouch",
+    medium: "Image",
+    src: "/assets/portfolio/studio-glamour.jpg",
   },
   {
     id: 3,
-    title: "Vanguard FW24",
-    category: "Fashion",
-    medium: "Video",
-    image: "https://images.unsplash.com/photo-1551244072-5d12893278ab?auto=format&fit=crop&q=80&w=800",
-    height: "h-[450px]",
+    title: "Magazine Flatlay",
+    category: "Product Stills",
+    medium: "Image",
+    src: "/assets/portfolio/magazine-flatlay.jpg",
   },
   {
     id: 4,
-    title: "Sonic Resonance",
-    category: "Music Video",
-    medium: "Video",
-    image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=800",
-    height: "h-[350px]",
+    title: "Birthday Moments",
+    category: "Portrait",
+    medium: "Image",
+    src: "/assets/portfolio/birthday-portrait.jpg",
   },
   {
     id: 5,
-    title: "Ascent",
-    category: "Documentary",
-    medium: "Video",
-    image: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&q=80&w=800",
-    height: "h-[500px]",
+    title: "Fitness Outdoors",
+    category: "Lifestyle",
+    medium: "Image",
+    src: "/assets/portfolio/fitness-outdoor.jpg",
   },
   {
     id: 6,
-    title: "Ethereal Cut",
-    category: "Fashion",
-    medium: "Video",
-    image: "https://images.unsplash.com/photo-1600096194534-95cf5ece04cf?auto=format&fit=crop&q=80&w=800",
-    height: "h-[320px]",
+    title: "Summer Lifestyle",
+    category: "Lifestyle",
+    medium: "Image",
+    src: "/assets/portfolio/summer-lifestyle.jpg",
   },
-  // Image — retouch / stills / thumbnails
   {
     id: 7,
-    title: "Lumina Beauty",
-    category: "Beauty Retouch",
+    title: "Urban Street",
+    category: "Street Photography",
     medium: "Image",
-    image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=800",
-    height: "h-[400px]",
+    src: "/assets/portfolio/urban-street.jpg",
   },
   {
     id: 8,
-    title: "Atlas Product Pack",
-    category: "Product Stills",
+    title: "Portrait Series I",
+    category: "Portrait",
     medium: "Image",
-    image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80&w=800",
-    height: "h-[320px]",
+    src: "/assets/portfolio/portrait-dsc1.jpg",
   },
   {
     id: 9,
-    title: "Click Magnet Set",
-    category: "Thumbnails",
+    title: "Portrait Series II",
+    category: "Portrait",
     medium: "Image",
-    image: "https://images.unsplash.com/photo-1611162616471-46b635cb9539?auto=format&fit=crop&q=80&w=800",
-    height: "h-[280px]",
+    src: "/assets/portfolio/portrait-dsc2.jpg",
   },
   {
     id: 10,
-    title: "Velvet Composite",
-    category: "Composite",
+    title: "Portrait Series III",
+    category: "Portrait",
     medium: "Image",
-    image: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&q=80&w=800",
-    height: "h-[450px]",
+    src: "/assets/portfolio/portrait-dsc3.jpg",
   },
   {
     id: 11,
-    title: "Shelf Ready",
-    category: "E-commerce",
+    title: "Model Editorial",
+    category: "Editorial",
     medium: "Image",
-    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=800",
-    height: "h-[360px]",
+    src: "/assets/portfolio/model-editorial.jpg",
   },
   {
     id: 12,
-    title: "Noir Editorial",
-    category: "Retouch",
+    title: "Kids Photography",
+    category: "Portrait",
     medium: "Image",
-    image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=80&w=800",
-    height: "h-[420px]",
+    src: "/assets/portfolio/kids-photo1.jpg",
+  },
+  {
+    id: 13,
+    title: "Kids Photography II",
+    category: "Portrait",
+    medium: "Image",
+    src: "/assets/portfolio/kids-photo2.jpg",
+  },
+  {
+    id: 14,
+    title: "Vietnam Lifestyle I",
+    category: "Lifestyle",
+    medium: "Image",
+    src: "/assets/portfolio/vietnam-lifestyle1.jpg",
+  },
+  {
+    id: 15,
+    title: "Vietnam Lifestyle II",
+    category: "Lifestyle",
+    medium: "Image",
+    src: "/assets/portfolio/vietnam-lifestyle2.jpg",
+  },
+  {
+    id: 16,
+    title: "Action Sports",
+    category: "Sports",
+    medium: "Image",
+    src: "/assets/portfolio/longboard-action.jpg",
+  },
+  {
+    id: 17,
+    title: "Lifestyle Shoot",
+    category: "Lifestyle",
+    medium: "Image",
+    src: "/assets/portfolio/lifestyle-hana.jpg",
+  },
+  {
+    id: 18,
+    title: "Portrait Shot",
+    category: "Portrait",
+    medium: "Image",
+    src: "/assets/portfolio/portrait-mg.jpg",
   },
 ];
 
+/* Split into 3 columns, duplicate for infinite loop */
+const col1 = portfolioItems.filter((_, i) => i % 3 === 0);
+const col2 = portfolioItems.filter((_, i) => i % 3 === 1);
+const col3 = portfolioItems.filter((_, i) => i % 3 === 2);
+
+const columns: { items: typeof portfolioItems; direction: "up" | "down" }[] = [
+  { items: [...col1, ...col1], direction: "up" },
+  { items: [...col2, ...col2], direction: "down" },
+  { items: [...col3, ...col3], direction: "up" },
+];
+
 /* -------------------------------------------------------------------------- */
-/*  Component                                                                  */
+/*  Lightbox                                                                   */
+/* -------------------------------------------------------------------------- */
+
+function MediaLightbox({
+  items,
+  index,
+  onClose,
+  onPrev,
+  onNext,
+}: {
+  items: typeof portfolioItems;
+  index: number | null;
+  onClose: () => void;
+  onPrev: () => void;
+  onNext: () => void;
+}) {
+  const item = index !== null ? items[index] : null;
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowLeft") onPrev();
+      if (e.key === "ArrowRight") onNext();
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [onClose, onPrev, onNext]);
+
+  useEffect(() => {
+    document.body.style.overflow = index !== null ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [index]);
+
+  useEffect(() => {
+    if (item?.medium === "Video" && videoRef.current) {
+      videoRef.current.currentTime = 0;
+      videoRef.current.play().catch(() => {});
+    }
+  }, [index, item?.medium]);
+
+  return (
+    <AnimatePresence>
+      {index !== null && item && (
+        <motion.div
+          key="backdrop"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.25 }}
+          className="fixed inset-0 z-[300] flex items-center justify-center"
+          style={{ background: "rgba(3,10,18,0.93)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)" }}
+          onClick={onClose}
+        >
+          <motion.div
+            key={item.id}
+            initial={{ opacity: 0, scale: 0.92, y: 24 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.94, y: 16 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className="relative flex flex-col items-center px-4"
+            style={{ maxWidth: "90vw" }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {item.medium === "Video" ? (
+              <video
+                ref={videoRef}
+                key={item.src}
+                src={item.src}
+                poster={item.poster}
+                controls
+                playsInline
+                className="rounded-2xl shadow-2xl bg-black"
+                style={{
+                  maxWidth: "min(88vw, 1100px)",
+                  maxHeight: "72vh",
+                  width: "min(88vw, 1100px)",
+                  aspectRatio: "16/9",
+                  objectFit: "contain",
+                }}
+              />
+            ) : (
+              <div
+                key={item.src}
+                className="rounded-2xl shadow-2xl overflow-hidden relative"
+                style={{
+                  width: "min(88vw, 1100px)",
+                  maxHeight: "72vh",
+                  aspectRatio: "4/3",
+                }}
+              >
+                <Image
+                  src={item.src}
+                  alt={item.title}
+                  fill
+                  sizes="min(88vw, 1100px)"
+                  className="object-contain"
+                  quality={90}
+                />
+              </div>
+            )}
+
+            <div className="mt-5 flex items-center gap-3 flex-wrap justify-center">
+              <span
+                className="px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider border"
+                style={{
+                  background: "rgba(178,58,46,0.15)",
+                  borderColor: "rgba(178,58,46,0.4)",
+                  color: "#d96558",
+                }}
+              >
+                {item.medium}
+              </span>
+              <span className="text-gray-400 text-sm">{item.category}</span>
+              <span className="text-white font-semibold text-base">{item.title}</span>
+            </div>
+
+            <p className="mt-2 text-xs font-mono" style={{ color: "#52473f" }}>
+              {index + 1} / {items.length}
+            </p>
+
+            <button
+              onClick={onClose}
+              aria-label="Close lightbox"
+              className="absolute flex items-center justify-center rounded-full transition-all duration-200 hover:scale-110"
+              style={{
+                top: "-1rem",
+                right: "-1rem",
+                width: "2.5rem",
+                height: "2.5rem",
+                background: "rgba(255,255,255,0.1)",
+                border: "1px solid rgba(255,255,255,0.2)",
+                color: "#fff",
+              }}
+            >
+              <X size={18} />
+            </button>
+          </motion.div>
+
+          <button
+            onClick={(e) => { e.stopPropagation(); onPrev(); }}
+            aria-label="Previous item"
+            className="fixed left-4 top-1/2 -translate-y-1/2 flex items-center justify-center rounded-full transition-all duration-200 hover:scale-110"
+            style={{
+              width: "3rem",
+              height: "3rem",
+              background: "rgba(255,255,255,0.08)",
+              border: "1px solid rgba(255,255,255,0.15)",
+              color: "#fff",
+            }}
+          >
+            <ChevronLeft size={24} />
+          </button>
+
+          <button
+            onClick={(e) => { e.stopPropagation(); onNext(); }}
+            aria-label="Next item"
+            className="fixed right-4 top-1/2 -translate-y-1/2 flex items-center justify-center rounded-full transition-all duration-200 hover:scale-110"
+            style={{
+              width: "3rem",
+              height: "3rem",
+              background: "rgba(255,255,255,0.08)",
+              border: "1px solid rgba(255,255,255,0.15)",
+              color: "#fff",
+            }}
+          >
+            <ChevronRight size={24} />
+          </button>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Card                                                                       */
+/* -------------------------------------------------------------------------- */
+
+function PortfolioCard({
+  item,
+  onClick,
+}: {
+  item: (typeof portfolioItems)[number];
+  onClick: () => void;
+}) {
+  return (
+    <div
+      onClick={onClick}
+      className="relative w-full rounded-2xl overflow-hidden group cursor-pointer bg-navy-900 border border-navy-800 flex-shrink-0"
+      style={{ height: "340px" }}
+    >
+      {item.medium === "Video" ? (
+        <video
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
+          src={item.src}
+          poster={item.poster}
+          muted
+          loop
+          playsInline
+          preload="none"
+          onMouseEnter={(e) => (e.currentTarget as HTMLVideoElement).play()}
+          onMouseLeave={(e) => (e.currentTarget as HTMLVideoElement).pause()}
+        />
+      ) : (
+        <Image
+          src={item.src}
+          alt={item.title}
+          fill
+          sizes="(max-width: 1024px) 50vw, 33vw"
+          className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
+          quality={75}
+        />
+      )}
+
+      <div className="absolute inset-0 bg-navy-950/20 group-hover:bg-navy-950/55 transition-colors duration-500" />
+      <div className="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent opacity-80" />
+
+      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 scale-90 group-hover:scale-100">
+        <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 text-white shadow-xl">
+          {item.medium === "Video"
+            ? <Play size={22} className="ml-1 fill-white" />
+            : <ZoomIn size={20} />
+          }
+        </div>
+      </div>
+
+      <div className="absolute bottom-0 left-0 w-full p-5 translate-y-3 group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]">
+        <span className="text-xs font-mono text-brick-500 mb-1.5 block uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-75">
+          {item.medium} {String.fromCharCode(183)} {item.category}
+        </span>
+        <h3 className="text-heading-sm text-white drop-shadow-md">{item.title}</h3>
+      </div>
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Section                                                                    */
 /* -------------------------------------------------------------------------- */
 
 export default function Portfolio() {
-  const [activeCategory, setActiveCategory] = useState<(typeof categories)[number]>("All");
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
-  const filteredProjects = useMemo(() => {
-    if (activeCategory === "All") return portfolioData;
-    return portfolioData.filter((project) => project.medium === activeCategory);
-  }, [activeCategory]);
+  const handlePrev = useCallback(() => {
+    setSelectedIndex((i) =>
+      i === null ? null : (i - 1 + portfolioItems.length) % portfolioItems.length
+    );
+  }, []);
+
+  const handleNext = useCallback(() => {
+    setSelectedIndex((i) =>
+      i === null ? null : (i + 1) % portfolioItems.length
+    );
+  }, []);
 
   return (
     <section className="section bg-navy-950 relative overflow-hidden" id="portfolio">
-      <div className="container-site relative z-10">
-        
-        {/* Section Header & Filter */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
+      <div className="relative z-10">
+
+        <div className="container-site mb-12">
           <div className="max-w-xl">
             <span className="text-label text-brick-500 mb-2 block tracking-widest uppercase">
               Selected Works
@@ -147,77 +427,60 @@ export default function Portfolio() {
               Our creative <span className="gradient-text-accent">portfolio.</span>
             </h2>
           </div>
+        </div>
 
-          {/* Filter Bar */}
-          <div className="flex flex-wrap items-center gap-2">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={cn(
-                  "px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
-                  activeCategory === category
-                    ? "bg-brick-600 text-white shadow-glow-accent"
-                    : "bg-navy-900 text-gray-400 hover:bg-navy-800 hover:text-white border border-navy-800"
-                )}
-              >
-                {category}
-              </button>
-            ))}
+        <div
+          className="relative w-full overflow-hidden"
+          style={{ height: "780px" }}
+        >
+          <div
+            className="pointer-events-none absolute inset-x-0 top-0 z-20"
+            style={{
+              height: "120px",
+              background: "linear-gradient(to bottom, var(--color-navy-950), transparent)",
+            }}
+          />
+          <div
+            className="pointer-events-none absolute inset-x-0 bottom-0 z-20"
+            style={{
+              height: "120px",
+              background: "linear-gradient(to top, var(--color-navy-950), transparent)",
+            }}
+          />
+
+          <div className="container-site h-full">
+            <div
+              className="grid h-full"
+              style={{ gridTemplateColumns: "repeat(3, 1fr)", gap: "1.5rem" }}
+            >
+              {columns.map((col, colIdx) => (
+                <div key={colIdx} className="overflow-hidden">
+                  <div className={`marquee-track marquee-track--${col.direction}`}>
+                    {col.items.map((item, itemIdx) => (
+                      <PortfolioCard
+                        key={`${item.id}-${itemIdx}`}
+                        item={item}
+                        onClick={() =>
+                          setSelectedIndex(portfolioItems.findIndex((p) => p.id === item.id))
+                        }
+                      />
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Masonry Grid */}
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
-          <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project) => (
-              <motion.div
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                key={project.id}
-                className={cn(
-                  "relative break-inside-avoid w-full rounded-2xl overflow-hidden group cursor-pointer",
-                  "bg-navy-900 border border-navy-800",
-                  project.height
-                )}
-              >
-                {/* Background Image */}
-                <div 
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-[0.22,1,0.36,1] group-hover:scale-110"
-                  style={{ backgroundImage: `url(${project.image})` }}
-                />
-                
-                {/* Overlays */}
-                <div className="absolute inset-0 bg-navy-950/20 group-hover:bg-navy-950/60 transition-colors duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent opacity-80" />
-                
-                {/* Video: play icon · Image: zoom-only (no play) */}
-                {project.medium === "Video" && (
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 scale-90 group-hover:scale-100">
-                    <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 text-white shadow-xl">
-                      <Play size={24} className="ml-1 fill-white" />
-                    </div>
-                  </div>
-                )}
-
-                {/* Bottom Content */}
-                <div className="absolute bottom-0 left-0 w-full p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-[0.22,1,0.36,1]">
-                  <span className="text-xs font-mono text-brick-500 mb-2 block uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                    {project.medium} · {project.category}
-                  </span>
-                  <h3 className="text-heading-md text-white mb-1 drop-shadow-md">
-                    {project.title}
-                  </h3>
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </div>
-
       </div>
+
+      <MediaLightbox
+        items={portfolioItems}
+        index={selectedIndex}
+        onClose={() => setSelectedIndex(null)}
+        onPrev={handlePrev}
+        onNext={handleNext}
+      />
     </section>
   );
 }

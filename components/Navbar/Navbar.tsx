@@ -2,8 +2,9 @@
 
 import { useState, useCallback } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence, Variants } from "framer-motion";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 import { cn } from "@/lib/cn";
 import { useScrolled } from "@/hooks/use-scrolled";
@@ -117,26 +118,17 @@ export default function Navbar() {
           <Link
             href="#home"
             onClick={closeMobile}
-            className="relative z-10 flex items-center gap-2 group"
+            className="relative z-10 flex items-center group"
             aria-label="Shams Media — Home"
           >
-            {/* Stylised "S" mark */}
-            <span
-              className={cn(
-                "flex items-center justify-center",
-                "w-9 h-9 rounded-lg",
-                "bg-brick-600 text-white",
-                "font-display font-bold text-lg",
-                "transition-transform duration-300 ease-out",
-                "group-hover:scale-110 group-hover:rotate-[-4deg]",
-              )}
-            >
-              S
-            </span>
-            <span className="font-display font-semibold text-lg tracking-tight text-white">
-              Shams
-              <span className="text-brick-400 ml-0.5">Media</span>
-            </span>
+            <Image
+              src="/assets/logo.png"
+              alt="Shams Media"
+              width={160}
+              height={74}
+              className="h-11 w-auto object-contain transition-all duration-300 ease-out group-hover:scale-105"
+              priority
+            />
           </Link>
 
           {/* ── Desktop Links ─────────────────────────────────────────── */}

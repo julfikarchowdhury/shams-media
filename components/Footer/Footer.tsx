@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { AtSign, Send, Video, Globe, Mail, Phone, MapPin } from "lucide-react";
 
 /* -------------------------------------------------------------------------- */
@@ -66,10 +67,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-14">
           {/* Brand column */}
           <div className="flex flex-col gap-5">
-            <Link href="/" className="flex items-center gap-2 group w-fit">
-              <span className="text-2xl font-extrabold text-white tracking-tight">
-                Shams<span className="text-brick-500">.</span>
-              </span>
+            <Link href="/" className="flex items-center group w-fit">
+              <Image
+                src="/assets/logo.png"
+                alt="Shams Media"
+                width={150}
+                height={70}
+                className="h-10 w-auto object-contain transition-all duration-300 ease-out group-hover:opacity-80"
+              />
             </Link>
             <p className="text-sm text-gray-500 leading-relaxed max-w-xs">
               A premium creative editing agency crafting cinematic content that

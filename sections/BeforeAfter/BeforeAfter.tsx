@@ -10,39 +10,48 @@ import { BeforeAfterSlider } from "@/components/BeforeAfterSlider";
 const comparisonData = [
   {
     id: 1,
-    title: "Product Photo Cleanup",
-    description: "Clean backgrounds, color correction, and polish that make e-commerce stills shelf-ready.",
-    beforeImage: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80&w=2000&sat=-80&contrast=-40",
-    afterImage: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80&w=2000",
-    beforeLabel: "RAW STILL",
-    afterLabel: "RETOUCHED",
+    title: "Ghost Mannequin",
+    description: "Professional ghost mannequin technique giving garments a 3D shape without a model — perfect for e-commerce apparel.",
+    beforeImage: "/assets/beforeafter/ghost-mannequin/before.jpg",
+    afterImage: "/assets/beforeafter/ghost-mannequin/after.jpg",
+    beforeLabel: "BEFORE",
+    afterLabel: "AFTER",
   },
   {
     id: 2,
-    title: "Beauty Retouch",
-    description: "Natural skin refinement and tonal balance — editorial polish without looking plastic.",
-    beforeImage: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=2000&sat=-60&contrast=-30",
-    afterImage: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=2000",
+    title: "Background Masking",
+    description: "Precise cut-out masking that isolates subjects with hair-level accuracy for clean, professional results.",
+    beforeImage: "/assets/beforeafter/masking/before.jpg",
+    afterImage: "/assets/beforeafter/masking/after.jpg",
     beforeLabel: "BEFORE",
     afterLabel: "AFTER",
   },
   {
     id: 3,
-    title: "Cinematic Color Grading",
-    description: "Transforming flat, LOG footage into a vibrant, moody masterpiece.",
-    beforeImage: "https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&q=80&w=2000&sat=-100&contrast=-50",
-    afterImage: "https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&q=80&w=2000",
-    beforeLabel: "RAW LOG",
-    afterLabel: "GRADED",
+    title: "Beauty Retouch",
+    description: "Natural skin refinement and tonal balance — editorial polish without looking plastic.",
+    beforeImage: "/assets/beforeafter/retouch/before.jpg",
+    afterImage: "/assets/beforeafter/retouch/after.jpg",
+    beforeLabel: "BEFORE",
+    afterLabel: "AFTER",
   },
   {
     id: 4,
-    title: "VFX & Compositing",
-    description: "Seamlessly integrating 3D elements and removing unwanted background objects.",
-    beforeImage: "https://images.unsplash.com/photo-1551244072-5d12893278ab?auto=format&fit=crop&q=80&w=2000&sat=-50",
-    afterImage: "https://images.unsplash.com/photo-1551244072-5d12893278ab?auto=format&fit=crop&q=80&w=2000&sat=50",
-    beforeLabel: "BEFORE VFX",
-    afterLabel: "AFTER VFX",
+    title: "Symmetrical Retouch",
+    description: "Subtle symmetry corrections and refinements that bring balance and harmony to portrait photography.",
+    beforeImage: "/assets/beforeafter/symmetrical/before.jpg",
+    afterImage: "/assets/beforeafter/symmetrical/after.jpg",
+    beforeLabel: "BEFORE",
+    afterLabel: "AFTER",
+  },
+  {
+    id: 5,
+    title: "Shadow & Reflection",
+    description: "Natural shadow and reflection creation that grounds products convincingly in their environment.",
+    beforeImage: "/assets/beforeafter/shadow/before.jpg",
+    afterImage: "/assets/beforeafter/shadow/after.jpg",
+    beforeLabel: "BEFORE",
+    afterLabel: "AFTER",
   },
 ];
 
@@ -101,11 +110,28 @@ export default function BeforeAfterSection() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
-          className="flex flex-col gap-16 md:gap-24"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-14"
         >
           {comparisonData.map((item) => (
             <motion.div key={item.id} variants={fadeIn} className="flex flex-col">
-              <div className="mb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
+              {/* Card header */}
+              <div className="mb-5 flex items-start gap-5">
+                {/* Accent line + number */}
+                <div className="flex flex-col items-center gap-2 pt-1 flex-shrink-0">
+                  <span
+                    className="text-xs font-mono font-bold"
+                    style={{ color: "rgba(178,58,46,0.7)", letterSpacing: "0.05em" }}
+                  >
+                    {String(item.id).padStart(2, "0")}
+                  </span>
+                  <div
+                    className="w-px flex-1"
+                    style={{
+                      minHeight: "40px",
+                      background: "linear-gradient(to bottom, rgba(178,58,46,0.6), transparent)",
+                    }}
+                  />
+                </div>
                 <div>
                   <h3 className="text-heading-md text-white mb-2">{item.title}</h3>
                   <p className="text-body-sm text-gray-400 max-w-lg">{item.description}</p>
