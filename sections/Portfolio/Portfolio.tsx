@@ -433,21 +433,6 @@ export default function Portfolio() {
           className="relative w-full overflow-hidden"
           style={{ height: "780px" }}
         >
-          <div
-            className="pointer-events-none absolute inset-x-0 top-0 z-20"
-            style={{
-              height: "120px",
-              background: "linear-gradient(to bottom, var(--color-navy-950), transparent)",
-            }}
-          />
-          <div
-            className="pointer-events-none absolute inset-x-0 bottom-0 z-20"
-            style={{
-              height: "120px",
-              background: "linear-gradient(to top, var(--color-navy-950), transparent)",
-            }}
-          />
-
           <div className="container-site h-full">
             <div
               className="grid h-full"

@@ -23,8 +23,8 @@ const socialLinks = [
 ];
 
 const contactInfo = [
-  { icon: Mail, text: "hello@shamsmedia.com", href: "mailto:hello@shamsmedia.com" },
-  { icon: Phone, text: "+1 (555) 000-0000", href: "tel:+15550000000" },
+  { icon: Mail, text: "mdshaharul2024@gmail.com", href: "mailto:mdshaharul2024@gmail.com" },
+  { icon: Phone, text: "+880 1790 599393", href: "https://wa.me/8801790599393" },
   { icon: MapPin, text: "Available Worldwide", href: null },
 ];
 

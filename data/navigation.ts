@@ -17,5 +17,5 @@ export const navLinks: NavLink[] = [
 
 export const ctaLink = {
   label: "Start Project",
-  href: "#contact",
+  href: "https://wa.me/8801790599393",
 } as const;

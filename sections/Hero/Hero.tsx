@@ -78,7 +78,7 @@ export default function Hero() {
       id="home"
       ref={containerRef}
       className={cn(
-        "relative min-h-[100dvh]",
+        "relative min-h-[100dvh] flex items-center",
         "pt-24 pb-16",
         "gradient-hero grain",
       )}
@@ -87,15 +87,15 @@ export default function Hero() {
       <div className="absolute top-1/4 left-0 w-96 h-96 bg-brick-600/10 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-navy-500/10 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="container-site relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-10 items-start">
+      <div className="container-site relative z-10 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-10 items-center">
 
           {/* ── Left Column: Content ────────────────────────────────────────── */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="flex flex-col gap-6 lg:pr-8 lg:pb-[45vh]"
+            className="flex flex-col gap-5 lg:pr-8"
           >
             <motion.div variants={itemVariants} className="inline-flex">
               <span className="badge badge-accent">
@@ -103,15 +103,15 @@ export default function Hero() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brick-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-brick-500"></span>
                 </span>
-                Premium Creative Agency
+                Creative Agency
               </span>
             </motion.div>
 
             <motion.h1
               variants={itemVariants}
-              className="text-display-xl text-balance"
+              className="font-display font-bold text-4xl sm:text-5xl lg:text-[3.75rem] xl:text-[4.25rem] leading-[1.02] tracking-tight text-balance"
             >
-              Cinematic visuals that <span className="gradient-text-accent">captivate</span> and convert.
+              Raw to <span className="gradient-text-accent">remarkable.</span>
             </motion.h1>
 
             <motion.p
@@ -126,7 +126,12 @@ export default function Hero() {
               className="flex flex-wrap items-center gap-4 mt-4"
             >
               <MagneticButton>
-                <Link href="#contact" className="btn btn-xl btn-primary group">
+                <Link
+                  href="https://wa.me/8801790599393"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-xl btn-primary group"
+                >
                   Start a Project
                   <ArrowUpRight size={20} strokeWidth={2.5} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </Link>
@@ -162,8 +167,8 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* ── Right Column: sticky video card (pins until hero ends) ─────── */}
-          <div className="relative hidden md:block w-full lg:sticky lg:top-28 self-start">
+          {/* ── Right Column: video card ─────── */}
+          <div className="relative hidden md:block w-full">
             <motion.div
               variants={timelineVariants}
               initial="hidden"

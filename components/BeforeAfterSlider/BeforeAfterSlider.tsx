@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import { cn } from "@/lib/cn";
@@ -8,6 +8,7 @@ interface BeforeAfterSliderProps {
   afterImage: string;
   beforeLabel?: string;
   afterLabel?: string;
+  showBadges?: boolean;
 }
 
 export function BeforeAfterSlider({
@@ -15,6 +16,7 @@ export function BeforeAfterSlider({
   afterImage,
   beforeLabel = "Before",
   afterLabel = "After",
+  showBadges = true,
 }: BeforeAfterSliderProps) {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
@@ -141,38 +143,42 @@ export function BeforeAfterSlider({
         </div>
       </div>
 
-      {/* BEFORE badge — always visible, bottom-left, outside clip context */}
-      <div className="absolute bottom-4 left-4 z-30 pointer-events-none">
-        <span
-          className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-mono font-semibold uppercase tracking-widest"
-          style={{
-            background: "rgba(0,0,0,0.6)",
-            backdropFilter: "blur(10px)",
-            WebkitBackdropFilter: "blur(10px)",
-            color: "#e5e7eb",
-            border: "1px solid rgba(255,255,255,0.18)",
-          }}
-        >
-          {beforeLabel}
-        </span>
-      </div>
+      {/* BEFORE badge */}
+      {showBadges && beforeLabel && (
+        <div className="absolute bottom-4 left-4 z-30 pointer-events-none">
+          <span
+            className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-mono font-semibold uppercase tracking-widest"
+            style={{
+              background: "rgba(0,0,0,0.6)",
+              backdropFilter: "blur(10px)",
+              WebkitBackdropFilter: "blur(10px)",
+              color: "#e5e7eb",
+              border: "1px solid rgba(255,255,255,0.18)",
+            }}
+          >
+            {beforeLabel}
+          </span>
+        </div>
+      )}
 
-      {/* AFTER badge — always visible, bottom-right, outside clip context */}
-      <div className="absolute bottom-4 right-4 z-30 pointer-events-none">
-        <span
-          className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-mono font-semibold uppercase tracking-widest"
-          style={{
-            background: "rgba(178,58,46,0.85)",
-            backdropFilter: "blur(10px)",
-            WebkitBackdropFilter: "blur(10px)",
-            color: "#fff",
-            border: "1px solid rgba(220,80,60,0.5)",
-            boxShadow: "0 2px 16px rgba(178,58,46,0.35)",
-          }}
-        >
-          {afterLabel}
-        </span>
-      </div>
+      {/* AFTER badge */}
+      {showBadges && afterLabel && (
+        <div className="absolute bottom-4 right-4 z-30 pointer-events-none">
+          <span
+            className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-mono font-semibold uppercase tracking-widest"
+            style={{
+              background: "rgba(178,58,46,0.85)",
+              backdropFilter: "blur(10px)",
+              WebkitBackdropFilter: "blur(10px)",
+              color: "#fff",
+              border: "1px solid rgba(220,80,60,0.5)",
+              boxShadow: "0 2px 16px rgba(178,58,46,0.35)",
+            }}
+          >
+            {afterLabel}
+          </span>
+        </div>
+      )}
 
       {/* Drag hint — fades after first interaction */}
       <div
