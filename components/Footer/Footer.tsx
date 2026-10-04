@@ -71,9 +71,9 @@ export default function Footer() {
               <Image
                 src="/assets/logo.png"
                 alt="Shams Media"
-                width={150}
-                height={70}
-                className="h-10 w-auto object-contain transition-all duration-300 ease-out group-hover:opacity-80"
+                width={220}
+                height={93}
+                className="h-12 sm:h-14 w-auto object-contain transition-all duration-300 ease-out group-hover:opacity-80"
               />
             </Link>
             <p className="text-sm text-gray-500 leading-relaxed max-w-xs">

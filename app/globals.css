@@ -25,17 +25,17 @@
   --color-navy-100: #c0d3e8;
   --color-navy-50: #eaf1f8;
 
-  --color-brick-900: #4a120a;
-  --color-brick-800: #7a1e12;
-  --color-brick-700: #9c2a1c;
-  --color-brick-600: #b23a2e;
+  --color-brick-900: #570a0a;
+  --color-brick-800: #8f1212;
+  --color-brick-700: #c41c1c;
+  --color-brick-600: #ff3131;
   /* PRIMARY ACCENT */
-  --color-brick-500: #c64c40;
-  --color-brick-400: #d96558;
-  --color-brick-300: #e68078;
-  --color-brick-200: #f0a39d;
-  --color-brick-100: #f8ccc9;
-  --color-brick-50: #fdf0ef;
+  --color-brick-500: #ff4d4d;
+  --color-brick-400: #ff6e6e;
+  --color-brick-300: #ff9999;
+  --color-brick-200: #ffc4c4;
+  --color-brick-100: #ffe5e5;
+  --color-brick-50: #fff5f5;
 
   /* Neutrals — warm-tinted */
   --color-white: #f8f7f5;

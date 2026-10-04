@@ -206,7 +206,7 @@ export default function CTA() {
                 transition={{ type: "spring", stiffness: 300, damping: 22 }}
                 className="group inline-flex items-center gap-3 px-8 py-4 rounded-full
                            bg-brick-600 hover:bg-brick-500 text-white font-semibold text-lg
-                           shadow-[0_0_40px_rgba(178,58,46,0.35)] hover:shadow-[0_0_60px_rgba(178,58,46,0.55)]
+                           shadow-[0_0_40px_rgba(255,49,49,0.35)] hover:shadow-[0_0_60px_rgba(255,49,49,0.55)]
                            transition-all duration-300"
               >
                 Start Your Project

@@ -10,15 +10,6 @@ import { BeforeAfterSlider } from "@/components/BeforeAfterSlider";
 const comparisonData = [
   {
     id: 1,
-    title: "Ghost Mannequin",
-    description: "Professional ghost mannequin technique giving garments a 3D shape without a model — perfect for e-commerce apparel.",
-    beforeImage: "/assets/beforeafter/ghost-mannequin/before.jpg",
-    afterImage: "/assets/beforeafter/ghost-mannequin/after.jpg",
-    beforeLabel: "BEFORE",
-    afterLabel: "AFTER",
-  },
-  {
-    id: 2,
     title: "Background Masking",
     description: "Precise cut-out masking that isolates subjects with hair-level accuracy for clean, professional results.",
     beforeImage: "/assets/beforeafter/masking/before.jpg",
@@ -27,7 +18,34 @@ const comparisonData = [
     afterLabel: "AFTER",
   },
   {
+    id: 2,
+    title: "Shadow & Reflection",
+    description: "Natural shadow and reflection creation that grounds products convincingly in their environment.",
+    beforeImage: "/assets/beforeafter/shadow/before.jpg",
+    afterImage: "/assets/beforeafter/shadow/after.jpg",
+    beforeLabel: "BEFORE",
+    afterLabel: "AFTER",
+  },
+  {
     id: 3,
+    title: "Jewelry Retouch",
+    description: "Polished metal, brilliant gemstones, and spotless surfaces for luxury catalog-ready jewelry imagery.",
+    beforeImage: "/assets/beforeafter/jewelry/before.jpg",
+    afterImage: "/assets/beforeafter/jewelry/after.jpg",
+    beforeLabel: "BEFORE",
+    afterLabel: "AFTER",
+  },
+  {
+    id: 4,
+    title: "Product Retouch",
+    description: "Color-accurate, clean product images with balanced lighting — ready for any marketplace.",
+    beforeImage: "/assets/beforeafter/product/before.jpg",
+    afterImage: "/assets/beforeafter/product/after.jpg",
+    beforeLabel: "BEFORE",
+    afterLabel: "AFTER",
+  },
+  {
+    id: 5,
     title: "Beauty Retouch",
     description: "Natural skin refinement and tonal balance — editorial polish without looking plastic.",
     beforeImage: "/assets/beforeafter/retouch/before.jpg",
@@ -36,7 +54,7 @@ const comparisonData = [
     afterLabel: "AFTER",
   },
   {
-    id: 4,
+    id: 6,
     title: "Symmetrical Retouch",
     description: "Subtle symmetry corrections and refinements that bring balance and harmony to portrait photography.",
     beforeImage: "/assets/beforeafter/symmetrical/before.jpg",
@@ -45,11 +63,11 @@ const comparisonData = [
     afterLabel: "AFTER",
   },
   {
-    id: 5,
-    title: "Shadow & Reflection",
-    description: "Natural shadow and reflection creation that grounds products convincingly in their environment.",
-    beforeImage: "/assets/beforeafter/shadow/before.jpg",
-    afterImage: "/assets/beforeafter/shadow/after.jpg",
+    id: 7,
+    title: "Ghost Mannequin",
+    description: "Professional ghost mannequin technique giving garments a 3D shape without a model — perfect for e-commerce apparel.",
+    beforeImage: "/assets/beforeafter/ghost-mannequin/before.jpg",
+    afterImage: "/assets/beforeafter/ghost-mannequin/after.jpg",
     beforeLabel: "BEFORE",
     afterLabel: "AFTER",
   },
@@ -120,7 +138,7 @@ export default function BeforeAfterSection() {
                 <div className="flex flex-col items-center gap-2 pt-1 flex-shrink-0">
                   <span
                     className="text-xs font-mono font-bold"
-                    style={{ color: "rgba(178,58,46,0.7)", letterSpacing: "0.05em" }}
+                    style={{ color: "rgba(255,49,49,0.7)", letterSpacing: "0.05em" }}
                   >
                     {String(item.id).padStart(2, "0")}
                   </span>
@@ -128,7 +146,7 @@ export default function BeforeAfterSection() {
                     className="w-px flex-1"
                     style={{
                       minHeight: "40px",
-                      background: "linear-gradient(to bottom, rgba(178,58,46,0.6), transparent)",
+                      background: "linear-gradient(to bottom, rgba(255,49,49,0.6), transparent)",
                     }}
                   />
                 </div>

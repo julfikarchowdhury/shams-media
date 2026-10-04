@@ -111,7 +111,7 @@ export default function Industries() {
               transition={{ type: "spring", stiffness: 260, damping: 20 }}
               className="group relative flex flex-col items-center justify-center gap-4 p-6 rounded-2xl
                          bg-navy-900 border border-navy-800 cursor-default overflow-hidden
-                         hover:border-brick-700 hover:shadow-[0_0_28px_rgba(178,58,46,0.15)]
+                         hover:border-brick-700 hover:shadow-[0_0_28px_rgba(255,49,49,0.15)]
                          transition-colors duration-300"
             >
               {/* Hover glow bubble */}

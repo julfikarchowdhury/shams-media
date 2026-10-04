@@ -35,15 +35,6 @@ interface ComparisonItem {
 const comparisonData: ComparisonItem[] = [
   {
     id: 1,
-    title: "Ghost Mannequin",
-    subtitle: "Apparel & E-Commerce",
-    description: "Professional ghost mannequin technique giving garments a realistic 3D shape without a visible model — perfect for high-conversion apparel storefronts, brand catalogs, and lookbooks.",
-    highlights: ["3D hollow volume", "Neck joint restoration", "Wrinkle & symmetry control"],
-    beforeImage: "/assets/beforeafter/ghost-mannequin/before.jpg",
-    afterImage: "/assets/beforeafter/ghost-mannequin/after.jpg",
-  },
-  {
-    id: 2,
     title: "Background Masking",
     subtitle: "Edge & Hair Isolation",
     description: "Precise cut-out masking that isolates subjects with sub-pixel and hair-level accuracy for clean, seamless composite integration against any studio or lifestyle backdrop.",
@@ -52,7 +43,34 @@ const comparisonData: ComparisonItem[] = [
     afterImage: "/assets/beforeafter/masking/after.jpg",
   },
   {
+    id: 2,
+    title: "Shadow & Reflection",
+    subtitle: "Realistic Lighting & Grounding",
+    description: "Authentic contact shadow generation, soft ambient drop shadows, and reflection mapping that convincingly ground products into their environment for commercial catalogs.",
+    highlights: ["Cast & contact shadows", "Soft light falloff", "Realistic reflections"],
+    beforeImage: "/assets/beforeafter/shadow/before.jpg",
+    afterImage: "/assets/beforeafter/shadow/after.jpg",
+  },
+  {
     id: 3,
+    title: "Jewelry Retouch",
+    subtitle: "Metal, Gem & Sparkle",
+    description: "High-end jewelry retouching that cleans metal surfaces, enhances gemstone brilliance, and removes dust and scratches for luxury catalog-ready results.",
+    highlights: ["Metal polish & reflections", "Gemstone clarity", "Dust & scratch removal"],
+    beforeImage: "/assets/beforeafter/jewelry/before.jpg",
+    afterImage: "/assets/beforeafter/jewelry/after.jpg",
+  },
+  {
+    id: 4,
+    title: "Product Retouch",
+    subtitle: "E-Commerce Ready",
+    description: "Clean, color-accurate product retouching with background cleanup, label correction, and lighting balance for marketplaces and online stores.",
+    highlights: ["Color correction", "Background cleanup", "Marketplace-ready output"],
+    beforeImage: "/assets/beforeafter/product/before.jpg",
+    afterImage: "/assets/beforeafter/product/after.jpg",
+  },
+  {
+    id: 5,
     title: "Beauty Retouch",
     subtitle: "Editorial & Skin Refinement",
     description: "Natural skin refinement, tone harmonization, and subtle contouring — delivering magazine-level editorial polish while preserving authentic organic skin pores and texture.",
@@ -61,7 +79,7 @@ const comparisonData: ComparisonItem[] = [
     afterImage: "/assets/beforeafter/retouch/after.jpg",
   },
   {
-    id: 4,
+    id: 6,
     title: "Symmetrical Retouch",
     subtitle: "Portrait & Feature Balance",
     description: "Subtle anatomical symmetry adjustments and facial balance refinements that elevate portrait photography with elegance and poise while preserving natural likeness.",
@@ -70,13 +88,13 @@ const comparisonData: ComparisonItem[] = [
     afterImage: "/assets/beforeafter/symmetrical/after.jpg",
   },
   {
-    id: 5,
-    title: "Shadow & Reflection",
-    subtitle: "Realistic Lighting & Grounding",
-    description: "Authentic contact shadow generation, soft ambient drop shadows, and reflection mapping that convincingly ground products into their environment for commercial catalogs.",
-    highlights: ["Cast & contact shadows", "Soft light falloff", "Realistic reflections"],
-    beforeImage: "/assets/beforeafter/shadow/before.jpg",
-    afterImage: "/assets/beforeafter/shadow/after.jpg",
+    id: 7,
+    title: "Ghost Mannequin",
+    subtitle: "Apparel & E-Commerce",
+    description: "Professional ghost mannequin technique giving garments a realistic 3D shape without a visible model — perfect for high-conversion apparel storefronts, brand catalogs, and lookbooks.",
+    highlights: ["3D hollow volume", "Neck joint restoration", "Wrinkle & symmetry control"],
+    beforeImage: "/assets/beforeafter/ghost-mannequin/before.jpg",
+    afterImage: "/assets/beforeafter/ghost-mannequin/after.jpg",
   },
 ];
 
@@ -307,7 +325,7 @@ export default function Services() {
                   {isActive && (
                     <motion.div
                       layoutId="activeServiceTabPill"
-                      className="absolute inset-0 rounded-xl sm:rounded-full bg-gradient-to-r from-brick-600 to-brick-500 shadow-[0_0_24px_rgba(178,58,46,0.4)]"
+                      className="absolute inset-0 rounded-xl sm:rounded-full bg-gradient-to-r from-brick-600 to-brick-500 shadow-[0_0_24px_rgba(255,49,49,0.4)]"
                       transition={{ type: "spring", stiffness: 400, damping: 32 }}
                     />
                   )}
@@ -432,7 +450,7 @@ export default function Services() {
                     onClick={() => setSelectedVideo(video)}
                   >
                     {/* Thumbnail */}
-                    <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-navy-950 border border-navy-800 transition-all duration-500 ease-out group-hover:border-brick-600/50 group-hover:shadow-[0_0_30px_rgba(178,58,46,0.2)] group-hover:-translate-y-1.5">
+                    <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-navy-950 border border-navy-800 transition-all duration-500 ease-out group-hover:border-brick-600/50 group-hover:shadow-[0_0_30px_rgba(255,49,49,0.2)] group-hover:-translate-y-1.5">
                       <img
                         src={video.thumbnail}
                         alt={video.title}

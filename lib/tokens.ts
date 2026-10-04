@@ -20,16 +20,16 @@ export const colors = {
   },
   // Brick Red scale
   brick: {
-    900: "#4a120a",
-    800: "#7a1e12",
-    700: "#9c2a1c",
-    600: "#b23a2e",
-    500: "#c64c40",
-    400: "#d96558",
-    300: "#e68078",
-    200: "#f0a39d",
-    100: "#f8ccc9",
-    50:  "#fdf0ef",
+    900: "#570a0a",
+    800: "#8f1212",
+    700: "#c41c1c",
+    600: "#ff3131",
+    500: "#ff4d4d",
+    400: "#ff6e6e",
+    300: "#ff9999",
+    200: "#ffc4c4",
+    100: "#ffe5e5",
+    50:  "#fff5f5",
   },
   // Neutrals
   white:   "#f8f7f5",
@@ -51,8 +51,8 @@ export const colors = {
   surface:       "#0d1a2d",
   surfaceRaised: "#12243d",
   border:        "#1a3052",
-  accent:        "#b23a2e",
-  accentHover:   "#c64c40",
+  accent:        "#ff3131",
+  accentHover:   "#ff4d4d",
 } as const;
 
 export const font = {

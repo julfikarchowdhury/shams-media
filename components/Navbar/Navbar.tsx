@@ -124,9 +124,9 @@ export default function Navbar() {
             <Image
               src="/assets/logo.png"
               alt="Shams Media"
-              width={160}
-              height={74}
-              className="h-11 w-auto object-contain transition-all duration-300 ease-out group-hover:scale-105"
+              width={220}
+              height={93}
+              className="h-12 sm:h-13 lg:h-14 w-auto object-contain transition-all duration-300 ease-out group-hover:scale-105"
               priority
             />
           </Link>
@@ -231,7 +231,7 @@ export default function Navbar() {
               className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-[30vh] rounded-full pointer-events-none"
               style={{
                 background:
-                  "radial-gradient(ellipse at center, rgba(178,58,46,0.12) 0%, transparent 70%)",
+                  "radial-gradient(ellipse at center, rgba(255,49,49,0.12) 0%, transparent 70%)",
               }}
             />
 

@@ -117,7 +117,7 @@ export function BeforeAfterSlider({
           width: "2px",
           transform: "translateX(-50%)",
           background: "rgba(255,255,255,0.9)",
-          boxShadow: "0 0 14px 3px rgba(255,255,255,0.25), 0 0 3px 1px rgba(178,58,46,0.5)",
+          boxShadow: "0 0 14px 3px rgba(255,255,255,0.25), 0 0 3px 1px rgba(255,49,49,0.5)",
         }}
       />
 
@@ -133,7 +133,7 @@ export function BeforeAfterSlider({
           className="w-11 h-11 rounded-full flex items-center justify-center"
           style={{
             background: "rgba(255,255,255,0.97)",
-            boxShadow: "0 4px 20px rgba(0,0,0,0.4), 0 0 0 3px rgba(178,58,46,0.2)",
+            boxShadow: "0 4px 20px rgba(0,0,0,0.4), 0 0 0 3px rgba(255,49,49,0.2)",
           }}
         >
           <svg width="20" height="12" viewBox="0 0 20 12" fill="none">
@@ -167,12 +167,12 @@ export function BeforeAfterSlider({
           <span
             className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-mono font-semibold uppercase tracking-widest"
             style={{
-              background: "rgba(178,58,46,0.85)",
+              background: "rgba(255,49,49,0.85)",
               backdropFilter: "blur(10px)",
               WebkitBackdropFilter: "blur(10px)",
               color: "#fff",
-              border: "1px solid rgba(220,80,60,0.5)",
-              boxShadow: "0 2px 16px rgba(178,58,46,0.35)",
+              border: "1px solid rgba(255,49,49,0.5)",
+              boxShadow: "0 2px 16px rgba(255,49,49,0.35)",
             }}
           >
             {afterLabel}
